@@ -294,29 +294,6 @@ CREATE EVENT ServerUpdate
 ON SCHEDULE EVERY 1 DAY
 DO CALL CallAll();
 
-
- INSERT INTO Employee(Employee_ID, Employee_FirstName, Employee_MiddleName, Employee_LastName, Employee_DateOfHire)
- VALUES (20160001, 'John', 'Doe', 'Smith', '2016-11-12'),
-(20170004, 'Jane', 'Elizabeth', 'Doe', '2017-09-08'),
-(20180006, 'Robert', 'Albert', 'Johnson', '2018-12-22'),
-(20170056, 'Emily', 'nan', 'Davis', '2017-03-04'),
-(20180025, 'Michael', 'David', 'Williams', '2018-09-04'),
-(20190013, 'Sophia', 'nan', 'Miller', '2019-05-01'),
-(20190014, 'David', 'Elliott', 'Taylor', '2019-07-09'),
-(20230007, 'Olivia', 'nan', 'Anderson', '2023-02-16'),
-(20230012, 'William', 'Federson', 'Brown', '2023-01-09'),
-(20220001, 'Ava', 'nan', 'Martin', '2022-03-18'),
-(20170007, 'Isaac', 'nan', 'Thompson', '2017-11-03'),
-(20230008, 'Emma', 'Rose', 'Sanchez', '2023-05-07'),
-(20230009, 'Liam', 'Michael', 'Ramirez', '2023-02-25'),
-(20230010, 'Grace', 'nan', 'Cruz', '2023-11-15'),
-(20230011, 'Ethan', 'nan', 'Martinez', '2023-11-09'),
-(20160002, 'Hector', 'Cruz', 'Salamanca', '2016-04-28'),
-(20160076, 'Brian', 'nan', 'Walter', '2016-01-04'),
-(20180004, 'Mary', 'nan', 'Grace', '2018-12-01'),
-(20230021, 'Stephanie', 'Santiago', 'Olivarez', '2023-08-10'),
-(20190011, 'Jessie', 'nan', 'James', '2019-06-23');
-
 INSERT INTO Request
 VALUES ('JS2016084', '20160001', 'Membership', 'Accepted'),
 ('JD2017596', '20170004', 'Membership', 'Accepted'),
