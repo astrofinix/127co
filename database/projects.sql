@@ -61,11 +61,11 @@ INSERT INTO Timeline (Timeline_StartDate, Timeline_ExpectedFinishDate, Timeline_
 ('2018-10-01', '2018-11-30', '2018-11-30', 0);
 
 INSERT INTO Team (Team_Name, Team_Leader_ID) VALUES
-('Team 1', 1100),
-('Team 2', 1100),
-('Team 3', 1100),
-('Team 4', 1100),
-('Team 5', 1100);
+('Team 1', 20160001),
+('Team 2', 20170004),
+('Team 3', 20180006),
+('Team 4', 20170056),
+('Team 5', 20180025);
 
 INSERT INTO Project (Project_Name, Project_Description, Project_Type, Project_Budget, Project_Status, Project_Timeline_ID, Project_Team_ID, Project_Contract_ID) VALUES
 ('Uno', 'Project 1 Description', 'Web Application', 100000, 'In Development', 1, 1, 1),
