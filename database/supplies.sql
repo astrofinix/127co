@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS Item (
     Item_LastUpdated DATETIME,
     Supplier_Id INT,
     Item_Location VARCHAR(100),
-    FOREIGN KEY (Supplier_Id) REFERENCES Supplier(Supplier_Id)
+    FOREIGN KEY (Supplier_Id) REFERENCES Supplier(Supplier_Id),
+    FOREIGN KEY (Employee_Id) REFERENCES Employee(Employee_Id)
 );
 
 CREATE TABLE IF NOT EXISTS Transaction_History (
@@ -42,16 +43,16 @@ VALUES
 
 INSERT INTO Item (Property_Id, Employee_Id, Item_Type, Item_Status, Item_LastUpdated, Supplier_Id, Item_Location)
 VALUES
-    (101, 1001, 'Laptop', 'Available', '2023-01-01 12:00:00', 1, 'Inventory'),
-    (102, 1002, 'Chair', 'CurrentlyLoaned', '2023-01-02 10:30:00', 2, 'Office B'),
-    (103, 1003, 'Printer', 'Available', '2023-01-03 14:15:00', 3, 'Inventory'),
-    (104, 1004, 'Desk', 'CurrentlyLoaned', '2023-01-04 08:45:00', 4, 'Office D'),
-    (105, 1005, 'Projector', 'Available', '2023-01-05 16:20:00', 5, 'Inventory'),
-    (106, 1006, 'Sofa', 'CurrentlyLoaned', '2023-01-06 11:10:00', 6, 'Office F'),
-    (107, 1007, 'Refrigerator', 'Available', '2023-01-07 13:30:00', 7, 'Inventory'),
-    (108, 1008, 'Bookshelf', 'CurrentlyLoaned', '2023-01-08 09:55:00', 8, 'Office H'),
-    (109, 1009, 'Microwave', 'Available', '2023-01-09 15:40:00', 9, 'Inventory'),
-    (110, 1010, 'Whiteboard', 'CurrentlyLoaned', '2023-01-10 07:25:00', 10, 'Office J');
+    (101, 20160001, 'Laptop', 'Available', '2023-01-01 12:00:00', 1, 'Inventory'),
+    (102, 20170004, 'Chair', 'CurrentlyLoaned', '2023-01-02 10:30:00', 2, 'Office B'),
+    (103, 20180006, 'Printer', 'Available', '2023-01-03 14:15:00', 3, 'Inventory'),
+    (104, 20170056, 'Desk', 'CurrentlyLoaned', '2023-01-04 08:45:00', 4, 'Office D'),
+    (105, 20180025, 'Projector', 'Available', '2023-01-05 16:20:00', 5, 'Inventory'),
+    (106, 20190013, 'Sofa', 'CurrentlyLoaned', '2023-01-06 11:10:00', 6, 'Office F'),
+    (107, 20190014, 'Refrigerator', 'Available', '2023-01-07 13:30:00', 7, 'Inventory'),
+    (108, 20230007, 'Bookshelf', 'CurrentlyLoaned', '2023-01-08 09:55:00', 8, 'Office H'),
+    (109, 20230012, 'Microwave', 'Available', '2023-01-09 15:40:00', 9, 'Inventory'),
+    (110, 20220001, 'Whiteboard', 'CurrentlyLoaned', '2023-01-10 07:25:00', 10, 'Office J');
 
 INSERT INTO Transaction_History (Transaction_Id, Property_Id, Transaction_Type, Transaction_Datetime)
 VALUES
