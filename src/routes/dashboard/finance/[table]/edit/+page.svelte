@@ -10,18 +10,23 @@
 
   let formData: Record<string, any> = {};
 
-  const handleSubmit = () => {
-    // Handle form submission logic here
-    console.log(formData);
+  const handleSubmit = async() => {
+    await fetch("/dashboard/finance/api/database/edit", {
+      method: "POST",
+      body: JSON.stringify({
+        data: JSON.stringify(formData),
+        table: table,
+      }),
+    });
   };
 </script>
 
 <main class="w-full">
   <Breadcrumb
     items={[
-      { href: "/dashboard/supplies", text: "Supplies and Inventory" },
-      { href: `/dashboard/supplies/${table}`, text: "Items" },
-      { href: `/dashboard/supplies/${table}/edit`, text: "Edit an Entry" },
+      { href: "/dashboard/finance", text: "Finance" },
+      { href: `/dashboard/finance/${table}`, text: "Items" },
+      { href: `/dashboard/finance/${table}/edit`, text: "Edit an Entry" },
     ]}
   />
   {#each headers as header (header)}

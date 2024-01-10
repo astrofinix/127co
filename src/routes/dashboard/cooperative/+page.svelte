@@ -3,7 +3,9 @@
 </script>
 
 <main class="w-full">
-  <Breadcrumb items={[{ href: "/dashboard/cooperative", text: "Cooperative" }]} />
+  <Breadcrumb
+    items={[{ href: "/dashboard/cooperative", text: "Cooperative" }]}
+  />
   <a
     href="/dashboard/cooperative/request"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"

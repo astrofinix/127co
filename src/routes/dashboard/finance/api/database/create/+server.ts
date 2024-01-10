@@ -1,10 +1,6 @@
 import type { RequestHandler } from "./$types";
 import { json, error } from "@sveltejs/kit";
-import {
-  itemHeaders,
-  itemTransactionHeaders,
-  supplierHeaders,
-} from "$lib/headers";
+import { salaryHeaders, budgetHeaders, expenseHeaders, ctransactionHeaders } from "$lib/headers";
 
 import db from "$lib/server/database";
 
@@ -29,14 +25,17 @@ export const POST: RequestHandler = async ({ request }) => {
 
   let headers;
   switch (table) {
-    case "item":
-      headers = itemHeaders;
+    case "salary":
+      headers = salaryHeaders;
       break;
-    case "table":
-      headers = itemTransactionHeaders;
+    case "budget":
+      headers = budgetHeaders;
       break;
-    case "supplier":
-      headers = supplierHeaders;
+    case "expenditure":
+      headers = expenseHeaders;
+      break;
+    case "contract_transaction":
+      headers = ctransactionHeaders;
       break;
     default:
       return error(401, `Invalid table ${table}`);
@@ -48,9 +47,7 @@ export const POST: RequestHandler = async ({ request }) => {
     return error(401, `Missing key ${missingKey}`);
   }
   const headersSeparated = headers.join(" ,");
-  const values = headers
-    .map((key) => (formData[key] === "NULL" ? "NULL" : `'${formData[key]}'`))
-    .join(" ,");
+  const values = headers.map((key) => formData[key] === "NULL" ?  "NULL" : `'${formData[key]}'`).join(" ,");
 
   await db.execute(
     `INSERT INTO ${table} (${headersSeparated}) VALUES (${values});`,

@@ -7,7 +7,21 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   if (!id) throw redirect(302, "/login");
 
   const table = params.table;
+  const validTables = [
+    "salary",
+    "budget",
+    "expenditure",
+    "contract_transaction",
+  ];
+
+  if (!validTables.includes(table)) {
+    console.log(table);
+    throw redirect(302, "/dashboard");
+  }
+
+  const data = await db.execute(`SELECT * FROM ${params.table}`);
   return {
+    data: data[0],
     table: table,
   };
 };

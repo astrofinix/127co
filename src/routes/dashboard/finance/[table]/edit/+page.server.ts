@@ -1,10 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
-import {
-  itemTransactionHeaders,
-  itemHeaders,
-  supplierHeaders,
-} from "$lib/headers";
+import { salaryHeaders, budgetHeaders, expenseHeaders, ctransactionHeaders } from "$lib/headers"
 
 export const load: PageServerLoad = async ({ cookies, params }) => {
   const id = cookies.get("auth-token") || null;
@@ -14,14 +10,17 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
   let headers;
   switch (table) {
-    case "item":
-      headers = itemHeaders;
+    case "salary":
+      headers = salaryHeaders;
       break;
-    case "item_transaction":
-      headers = itemTransactionHeaders;
+    case "budget":
+      headers = budgetHeaders;
       break;
-    case "supplier":
-      headers = supplierHeaders;
+    case "expenditure":
+      headers = expenseHeaders;
+      break;
+    case "contract_transaction":
+      headers = ctransactionHeaders;
       break;
     default:
       throw redirect(302, "/dashboard");
@@ -29,6 +28,6 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
   return {
     table: table,
-    headers,
+    headers
   };
 };

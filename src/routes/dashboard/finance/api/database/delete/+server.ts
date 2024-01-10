@@ -8,14 +8,17 @@ export const POST: RequestHandler = async ({ request }) => {
 
   let primaryKey;
   switch (table) {
-    case "item_transaction":
-      primaryKey = "transaction_id";
+    case "salary":
+      primaryKey = "salary_id";
       break;
-    case "supplier":
-      primaryKey = "supplier_id";
+    case "budget":
+      primaryKey = "budget_id";
       break;
-    case "item":
-      primaryKey = "item_id";
+    case "expenditure":
+      primaryKey = "expense_id";
+      break;
+    case "contract_transaction":
+      primaryKey = "CT_id";
       break;
     default:
       return error(401, `Invalid ${table} passed`);

@@ -1,8 +1,8 @@
+import type { PageServerLoad, Actions } from "./$types";
+import { redirect, error } from "@sveltejs/kit";
 
-import type { PageServerLoad } from "./$types";
-import { redirect } from "@sveltejs/kit";
 import db from "$lib/server/database";
-import { itemTransactionHeaders, itemHeaders, supplierHeaders } from "$lib/headers"
+import Tables from "$lib/tables";
 
 export const load: PageServerLoad = async ({ cookies, params }) => {
   const id = cookies.get("auth-token") || null;
@@ -10,31 +10,29 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
   const table = params.table;
 
-  let headers;
-  let primaryKey;
-
-  switch (table) {
-    case "item":
-      headers = itemHeaders;
-      primaryKey = "Item_Id";
-      break;
-    case "item_transaction":
-      headers = itemTransactionHeaders;
-      primaryKey = "Transaction_Id";
-      break;
-    case "supplier":
-      headers = supplierHeaders;
-      primaryKey = "Supplier_Id";
-      break;
-    default:
-      throw redirect(302, "/dashboard");
-  }
-
   const data = await db.execute(`SELECT * FROM ${params.table}`);
   return {
     data: data[0],
     table: table,
-    headers: headers,
-    primaryKey: primaryKey
   };
 };
+
+export const actions: Actions = {
+  delete: async ({cookies, request}) => {
+    const data = await request.formData();
+    const id = data.get('id');
+    const tableName = data.get('table') as string;
+    const table = Tables[tableName];
+
+    if (!table) {
+      return error(404, {message: "invalid table"});
+    }
+
+    console.log("INVOKED");
+    await db.execute(`DELETE FROM ${tableName} WHERE ${table.primaryKey}=${id}`);
+
+    return { success: true };
+  },
+
+} 
+

@@ -1,27 +1,14 @@
 <script lang="ts">
-  import Table from "$lib/components/Table.svelte";
+  import Table from "$lib/components/supplies/Table.svelte";
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
-
   import type { PageServerData } from "./$types";
 
   export let data: NonNullable<PageServerData>;
 
-  const rows = data["data"];
-  const table = data["table"];
-  const headers = data["headers"];
-  const primaryKey = data["primaryKey"];
+  const rows = data["data"] as Array<Record<string, any>>;
+  const table = data["table"] as string;
+  const department = "supplies";
 
-  const handleEdit = async (id: number) => {};
-
-  const handleDelete = async (id: number) => {
-    await fetch("/dashboard/supplies/api/database/delete", {
-      method: "POST",
-      body: JSON.stringify({
-        id,
-        table: table,
-      }),
-    });
-  };
 </script>
 
 <main class="w-full">
@@ -41,10 +28,7 @@
     </div>
   </a>
   <Table
-    {primaryKey}
-    {handleDelete}
-    {handleEdit}
-    {headers}
+    {table}
     {rows}
   />
 </main>

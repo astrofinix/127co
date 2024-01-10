@@ -1,29 +1,16 @@
 <script lang="ts">
   import { Search, Button } from "flowbite-svelte";
-  import Table from "$lib/components/Table.svelte";
+  import Table from "$lib/components/supplies/Table.svelte";
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
 
   import type { PageServerData } from "./$types";
-  import {
-    itemHeaders,
-    supplierHeaders,
-    itemTransactionHeaders,
-  } from "$lib/headers";
 
   export let data: NonNullable<PageServerData>;
 
-  const items = data["items"];
-  const suppliers = data["suppliers"];
-  const transactions = data["transactions"];
+  const items = data["items"] as Array<Record<string, any>>;
+  const suppliers = data["suppliers"] as Array<Record<string, any>>;
+  const transactions = data["transactions"] as Array<Record<string, any>>;
 
-  const handleDelete = async (id: number, table: string) => {
-    await fetch("/dashboard/supplies/api/database/delete", {
-      method: "POST",
-      body: JSON.stringify({ id, table }),
-    });
-  };
-
-  const handleEdit = (id: number, table: string) => {};
 </script>
 
 <main class="w-full">
@@ -42,29 +29,20 @@
   </div>
 
   <Table
-    handleEdit={(id) => handleEdit(id, "item")}
-    handleDelete={(id) => handleDelete(id, "item")}
-    primaryKey="Item_Id"
-    headers={itemHeaders}
+    table="Item"
     rows={items}
   />
   <Table
-    handleEdit={(id) => handleEdit(id, "supplier")}
-    handleDelete={(id) => handleDelete(id, "supplier")}
-    primaryKey="Supplier_Id"
-    headers={supplierHeaders}
+    table="Supplier"
     rows={suppliers}
   />
   <Table
-    handleEdit={(id) => handleEdit(id, "item_transaction")}
-    handleDelete={(id) => handleDelete(id, "item_transaction")}
-    primaryKey="Transaction_Id"
-    headers={itemTransactionHeaders}
+    table="Item_Transaction"
     rows={transactions}
   />
 
   <a
-    href="/dashboard/supplies/item"
+    href="/dashboard/supplies/Item"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> devices </span>
@@ -78,7 +56,7 @@
   </a>
 
   <a
-    href="/dashboard/supplies/item_transaction"
+    href="/dashboard/supplies/Item_Transaction"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> contract </span>
@@ -94,7 +72,7 @@
   </a>
 
   <a
-    href="/dashboard/supplies/supplier"
+    href="/dashboard/supplies/Supplier"
     class="bg-buttonp rounded-lg z-4 border-2 mb-1 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> warehouse </span>

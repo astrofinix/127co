@@ -22,7 +22,7 @@ export const actions: Actions = {
     }
 
     const [rows] = await db.execute<RowDataPacket[]>(
-      `SELECT * FROM Employee WHERE Employee_Email = '${email}' AND Employee_Password = '${password}'`,
+      `SELECT * FROM Employee INNER JOIN PDS ON Employee.Employee_ID = PDS.Employee_ID INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Employee_Email = '${email}' AND Employee_Password = '${password}'`,
     );
 
     if (rows.length === 0) {
@@ -54,7 +54,7 @@ export const actions: Actions = {
         path: "/",
         httpOnly: true,
       });
-      cookies.set("role", rows[0]["Employee_Position"], {
+      cookies.set("role", rows[0]["Job_Position"], {
         path: "/",
         httpOnly: false,
       });
