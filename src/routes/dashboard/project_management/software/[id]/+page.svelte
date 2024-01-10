@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
+  import type { PageServerData } from "./$types";
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
 
-  export let data: PageData;
+  export let data: PageServerData;
 </script>
 
 <div class="container">

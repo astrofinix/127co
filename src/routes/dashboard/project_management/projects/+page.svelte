@@ -1,9 +1,9 @@
 <script lang="ts">
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import Menu from "$lib/components/Menu.svelte";
-  import type { PageData } from "./$types";
+  import type { PageServerData } from "./$types";
 
-  export let data: PageData;
+  export let data: PageServerData;
 
   let filtered_proj = data.projects;
   let show_add = true;

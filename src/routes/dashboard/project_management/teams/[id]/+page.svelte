@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
+  import type { PageServerData } from "./$types";
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import type { ActionResult } from "@sveltejs/kit";
   import { applyAction, deserialize } from "$app/forms";
 
-  export let data: PageData;
+  export let data: PageServerData;
 
   let show = false; // project
   let show2 = false; // software

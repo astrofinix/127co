@@ -1,8 +1,8 @@
 <script lang="ts">
   import DescriptiveLink from "$lib/components/DescriptiveLink.svelte";
-  import type { PageData } from "./$types";
+  import type { PageServerData } from "./$types";
 
-  export let data: PageData;
+  export let data: PageServerData;
 
   let links = data.links.filter((link) => link.href !== "/dashboard");
 </script>
