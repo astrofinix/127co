@@ -6,14 +6,16 @@
   import Alert from "$lib/components/Alert.svelte";
 
 
+
   export let data: NonNullable<PageServerData>;
 
   $: rows = data["data"] as Array<Record<string, any>>;
   const table = data["table"] as string;
   $: department = "cooperative";
-  const { name } = Tables[table];
+  const { headers, name } = Tables[table];
 </script>
 <main class="w-full">
+
   <Breadcrumb
     items={[
       { href: "/dashboard/cooperative", text: "Cooperative" },

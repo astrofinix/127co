@@ -1,19 +1,45 @@
 <script lang="ts">
+  import type { PageServerData } from "./$types";
+  import type { ActionResult } from "@sveltejs/kit";
+
+  import { applyAction, deserialize } from "$app/forms";
+  import { invalidateAll } from "$app/navigation";
+
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import { Label, Input, Helper } from "flowbite-svelte";
-  import type { PageServerData } from "./$types";
-  import { enhance } from "$app/forms";
   import Tables from "$lib/tables";
+  import Alerts from "$lib/components/Alerts.svelte";
 
   export let data: NonNullable<PageServerData>;
   $: table = data["table"];
   // @ts-ignore
   $: ({ name, headers } = Tables[table]);
 
+  let alerts: Array<{message: string, type: "fail" | "success"}>= [];
   let formData: Record<string, any> = {};
+
+  // @ts-ignore
+	async function handleSubmit(event) {
+		const data = new FormData(event.currentTarget);
+		const response = await fetch(event.currentTarget.action, {
+			method: 'POST',
+			body: data
+		});
+		const result: ActionResult = deserialize(await response.text());
+		if (result.type === 'success') {
+			await invalidateAll();
+		}
+    alerts = [
+      ...alerts,
+      // @ts-ignore
+      { message: result.data.message, type: result.data.success ? "success" : "fail"}
+    ]
+		applyAction(result);
+	}
 </script>
 
 <main class="w-full">
+  <Alerts data={alerts}/>
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },
@@ -45,7 +71,7 @@
     >
   {/each}
 
-  <form method="POST" action="?/add" use:enhance>
+  <form method="POST" action="?/add" on:submit|preventDefault={handleSubmit}>
     <input type="hidden" name="table" value={table} />
     {#each headers as header (header)}
       <input type="hidden" name={header} bind:value={formData[header]} />

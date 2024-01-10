@@ -1,12 +1,12 @@
 <script lang="ts">
-  import logo from "$lib/assets/logo.png";
   import cta from "$lib/assets/cta.png";
   import menu from "$lib/assets/icons/menu.svg";
+  import logo from "$lib/assets/logo.png";
 
   import facebook from "$lib/assets/icons/facebook.svg";
-  import twitter from "$lib/assets/icons/twitter.svg";
   import instagram from "$lib/assets/icons/instagram.svg";
   import linkedin from "$lib/assets/icons/linkedin.svg";
+  import twitter from "$lib/assets/icons/twitter.svg";
 
   let hiddenMenu: HTMLDivElement | null = null;
 
@@ -22,7 +22,7 @@
     <nav>
       <a href="/dashboard">Dashboard</a>
       <a href="/services">Services</a>
-      <a href="/bootcamp">Bootcamp</a>
+      <a href="/dashboard/bootcamp">Bootcamp</a>
       <a href="/clients">Our Clients</a>
       <a href="/careers">Careers</a>
       <a href="/about">About Us</a>
@@ -36,7 +36,7 @@
     <div class="hidden-menu" bind:this={hiddenMenu}>
       <nav>
         <a href="/services">Services</a>
-        <a href="/bootcamp">Bootcamp</a>
+        <a href="/dashboard/bootcamp">Bootcamp</a>
         <a href="/clients">Our Clients</a>
         <a href="/careers">Careers</a>
         <a href="/about">About Us</a>
@@ -64,7 +64,7 @@
       <div class="footer-links__left">
         <h2>Discover One Twenty Seven</h2>
         <a href="/services">Services</a>
-        <a href="/bootcamp">Bootcamp</a>
+        <a href="/dashboard/bootcamp">Bootcamp</a>
         <a href="/clients">Our Clients</a>
         <a href="/careers">Careers</a>
         <a href="/about">About Us</a>

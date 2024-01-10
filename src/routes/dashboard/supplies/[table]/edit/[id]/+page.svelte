@@ -1,8 +1,14 @@
 <script lang="ts">
+  import type { PageServerData } from "./$types";
+  import type { ActionResult } from "@sveltejs/kit";
+
+  import { applyAction, deserialize } from "$app/forms";
+  import { invalidateAll } from "$app/navigation";
+
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import { Label, Input, Helper } from "flowbite-svelte";
   import Tables from "$lib/tables";
-  import type { PageServerData } from "./$types";
+  import Alerts from "$lib/components/Alerts.svelte";
 
   import { onMount } from "svelte";
 
@@ -16,8 +22,7 @@
   const { headers, name } = Tables[table];
 =======
   $: ({ headers, name } = Tables[table]);
->>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
-
+  let alerts: Array<{message: string, type: "fail" | "success"}>= [];
   let formData: Record<string, any> = {};
 
   onMount(() => {
@@ -25,9 +30,30 @@
       formData[header] = rows[header];
     }
   });
+
+  // @ts-ignore
+	async function handleSubmit(event) {
+		const data = new FormData(event.currentTarget);
+		const response = await fetch(event.currentTarget.action, {
+			method: 'POST',
+			body: data
+		});
+		const result: ActionResult = deserialize(await response.text());
+    console.log(result)
+		if (result.type === 'success') {
+			await invalidateAll();
+		}
+    alerts = [
+      ...alerts,
+      // @ts-ignore
+      { message: result.data.message, type: result.data.success ? "success" : "fail"}
+    ]
+		applyAction(result);
+	}
 </script>
 
 <main class="w-full">
+  <Alerts data={alerts} />
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },
@@ -59,12 +85,12 @@
     >
   {/each}
 
-  <form method="POST">
+  <form method="POST" action="?/edit" on:submit|preventDefault={handleSubmit}>
     {#each headers as header (header)}
       <input type="hidden" name={header} bind:value={formData[header]} />
     {/each}
     <button
-      formaction="?/edit"
+      type="submit"
       class="mt-4 bg-accent hover:bg-primary-600 text-white px-4 py-2 rounded"
     >
       Edit an Entry

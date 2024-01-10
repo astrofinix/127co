@@ -127,6 +127,18 @@
         <option value="Terminated">Terminated</option>
       </select>
     </div>
+    <div class="flex items-center">
+      <label class="text-sm text-gray-900 p-1 pl-2 pr-2" for="name"
+        >Budget:</label
+      >
+      <input
+        class="text-sm border-2 rounded-full border-gray-400 text-gray-700 p-1 pl-2 pr-2"
+        type="number"
+        id="budget"
+        name="budget"
+        value={data.project.Project_Budget}
+      />
+    </div>
     <div class="flex justify-end col-span-2 p-2 space-x-2">
       <button
         type="submit"

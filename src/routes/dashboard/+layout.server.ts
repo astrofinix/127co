@@ -1,5 +1,5 @@
-import type { LayoutServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
+import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async ({ cookies }) => {
   const id = cookies.get("auth-token") || null;
@@ -10,7 +10,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
   const role = cookies.get("role");
 
   let links = [
-    { href: "/", label: "Overview", icon: "home" },
+    { href: "/dashboard", label: "Overview", icon: "home" },
     {
       href: "/dashboard/human_resources",
       label: "Human Resources",
@@ -43,7 +43,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
       label: "Supplies and Inventory",
       icon: "inventory_2",
     },
-    { href: "/bootcamp", label: "Bootcamp", icon: "school" },
+    { href: "/dashboard/bootcamp", label: "Bootcamp", icon: "school" },
   ];
   switch (role) {
     case "CEO":
@@ -51,7 +51,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
     case "Project Manager":
     case "Application Developer":
       links = [
-        { href: "/", label: "Home", icon: "home" },
+        { href: "/dashboard", label: "Home", icon: "home" },
         {
           href: "/dashboard/projects",
           label: "Projects",
