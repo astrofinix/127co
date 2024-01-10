@@ -16,32 +16,22 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
       label: "Human Resources",
       icon: "groups",
     },
-    { href: "/dashboard/finance", label: "Finance", icon: "payments" },
     {
-      href: "/dashboard/projects",
-      label: "Projects",
+      href: "/dashboard/project_management",
+      label: "Project Management",
       icon: "bookmark_manager",
-    },
-    {
-      href: "/dashboard/teams",
-      label: "Teams",
-      icon: "groups",
-    },
-    {
-      href: "/dashboard/software",
-      label: "Software",
-      icon: "developer_board",
-    },
-    { href: "/dashboard/marketing", label: "Marketing", icon: "campaign" },
-    {
-      href: "/dashboard/cooperative",
-      label: "Cooperative",
-      icon: "account_balance",
     },
     {
       href: "/dashboard/supplies",
       label: "Supplies and Inventory",
       icon: "inventory_2",
+    },
+    { href: "/dashboard/finance", label: "Finance", icon: "payments" },
+    { href: "/dashboard/marketing", label: "Marketing", icon: "campaign" },
+    {
+      href: "/dashboard/cooperative",
+      label: "Cooperative",
+      icon: "account_balance",
     },
     { href: "/dashboard/bootcamp", label: "Bootcamp", icon: "school" },
   ];
