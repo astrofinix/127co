@@ -1,5 +1,5 @@
-import type { LayoutServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
+import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async ({ cookies }) => {
   const id = cookies.get("auth-token") || null;
@@ -43,7 +43,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
       label: "Supplies and Inventory",
       icon: "inventory_2",
     },
-    { href: "/bootcamp", label: "Bootcamp", icon: "school" },
+    { href: "/dashboard/bootcamp", label: "Bootcamp", icon: "school" },
   ];
   switch (role) {
     case "CEO":
