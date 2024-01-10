@@ -20,7 +20,7 @@
 <div>
   <Breadcrumb
     items={[
-      { href: "/dashboard/project_management", text: "Page Management" },
+      { href: "/dashboard/project_management", text: "Project Management" },
       { href: "/dashboard/project_management/software", text: "Software" },
       {
         href: `/dashboard/project_management/software/${data.software.Software_Name}_${data.software.Software_Version}`,
