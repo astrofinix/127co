@@ -16,7 +16,7 @@
   <div class="container">
     <!-- Course listing -->
     <div class="project grid grid-cols-3 gap-5">
-      <!-- Iterate through courseList and create clickable boxes -->
+      <!-- Iterate through courseList and create clickable boxes   -->
       {#each courseList as course}
         <div
           on:click={() => handleCourseClick(course.id)}
