@@ -5,7 +5,7 @@
       // Add more courses as needed...
     ];
   
-    // Function to handle clicking on a course box
+    // Function to handle clicking on a course box//
     function handleCourseClick(id) {
       // For now, just log the clicked course's ID
       console.log(`Clicked on course with ID: ${id}`);
