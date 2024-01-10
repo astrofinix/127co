@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Budget (
     item_id INT,
     project_id INT,
     FOREIGN KEY (item_id) REFERENCES Item(item_id),
-    FOREIGN KEY (project_id) REFERENCES Project(project_id)
+    FOREIGN KEY (project_id) REFERENCES Project(project_id) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS Contract_Transaction (
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Contract_Transaction (
     ct_total_paid DECIMAL(10, 2) DEFAULT 0.00,      
     ct_payment_type VARCHAR(255),       
     project_id INT,
-    FOREIGN KEY (project_id) REFERENCES Project(Project_id)
+    FOREIGN KEY (project_id) REFERENCES Project(Project_id) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS Expenditure (

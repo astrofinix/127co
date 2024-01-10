@@ -7,7 +7,7 @@
   export let table: string;
 
   // @ts-ignore
-  $: ({headers, primaryKey, department} = Tables[table]);
+  $: ({ headers, primaryKey, department } = Tables[table]);
 </script>
 
 <div class="flex mt-4 mb-4 flex-col">
@@ -45,9 +45,13 @@
                 <td
                   class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium"
                 >
-                  <form method="POST" 
-                    use:enhance >
-                    <input type="hidden" name="table" id={row[primaryKey]} bind:value={table} />
+                  <form method="POST" use:enhance>
+                    <input
+                      type="hidden"
+                      name="table"
+                      id={row[primaryKey]}
+                      bind:value={table}
+                    />
                     <input
                       type="hidden"
                       name="id"

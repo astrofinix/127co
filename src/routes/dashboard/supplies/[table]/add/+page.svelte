@@ -8,7 +8,7 @@
   export let data: NonNullable<PageServerData>;
   $: table = data["table"];
   // @ts-ignore
-  $: ({name, headers} = Tables[table]);
+  $: ({ name, headers } = Tables[table]);
 
   let formData: Record<string, any> = {};
 </script>

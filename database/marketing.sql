@@ -27,11 +27,11 @@ CREATE TABLE IF NOT EXISTS Contract (
     Contract_MaintenanceYears INT(20) NOT NULL,
     Contract_Status ENUM("Ongoing", "Finished", "Terminated") NOT NULL,
     Contract_FileLink VARCHAR(255) NOT NULL,
-    Project_ID INT NOT NULL,
+    Project_ID INT,
     Signatory_ClientID INT NOT NULL,
     Signatory_EmployeeID INT NOT NULL,
     Transaction_ID INT NOT NULL,
-    FOREIGN KEY (Project_ID) REFERENCES Project(Project_ID),
+    FOREIGN KEY (Project_ID) REFERENCES Project(Project_ID) ON DELETE SET NULL,
     FOREIGN KEY (Signatory_ClientID) REFERENCES Client(Client_ID),
     FOREIGN KEY (Signatory_EmployeeID) REFERENCES Employee(Employee_ID),
     FOREIGN KEY (Transaction_ID) REFERENCES Contract_Transaction(CT_ID)

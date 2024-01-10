@@ -1,17 +1,30 @@
 <script lang="ts">
-    import type { PageServerData } from "./$types";
+  import Breadcrumb from "$lib/components/Breadcrumb.svelte";
+  import type { PageServerData } from "./$types";
 
-    export let data: PageServerData;
+  export let data: PageServerData;
 </script>
 
+<div>
+  <Breadcrumb
+    items={[
+      { href: "/dashboard/projects", text: "Projects" },
+      {
+        href: `/dashboard/projects/${data.project.Project_ID}`,
+        text: data.project.Project_Name,
+      },
+      {
+        href: `/dashboard/projects/${data.project.Project_ID}/delete`,
+        text: `Delete ${data.project.Project_Name}`,
+      },
+    ]}
+  />
 
-<!-- confirm delete -->
-
-<div class="container">
-    <h1 class="text-3xl font-bold mb-4">Delete Project</h1>
+  <div class="container">
     <p class="mb-4">Are you sure you want to delete this project?</p>
     <form method="POST">
-        <button type="submit">Yes</button>
-        <a href="/dashboard/projects/{data.project.Project_ID}">Cancel</a>
+      <button type="submit">Yes</button>
+      <a href="/dashboard/projects/{data.project.Project_ID}">Cancel</a>
     </form>
+  </div>
 </div>
