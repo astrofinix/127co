@@ -1,16 +1,17 @@
 <script lang="ts">
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
-  import type { PageServerLoad } from "./$types";
+  import type { PageServerData } from "./$types";
 
-  export let data: PageServerLoad;
+  export let data: PageServerData;
 </script>
 
 <div>
   <Breadcrumb
     items={[
-      { href: "/dashboard/teams", text: "Team" },
+      { href: "/dashboard/project_management", text: "Project Management" },
+      { href: "/dashboard/project_management/teams", text: "Team" },
       {
-        href: `/dashboard/teams/create`,
+        href: `/dashboard/project_management/teams/create`,
         text: `Create Team`,
       },
     ]}
@@ -58,7 +59,7 @@
         <span class="text-base">Save</span>
       </button>
       <a
-        href="/dashboard/teams"
+        href="/dashboard/project_management/teams"
         class={"flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
       >
         <span class="material-symbols-outlined">cancel</span>
