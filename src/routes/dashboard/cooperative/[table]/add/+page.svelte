@@ -3,7 +3,6 @@
   import { Label, Input, Helper } from "flowbite-svelte";
   import type { PageServerData } from "./$types";
   import Tables from "$lib/tables";
-<<<<<<< HEAD
 
   export let data: NonNullable<PageServerData>;
   const table = data["table"];
@@ -12,17 +11,6 @@
   const { headers, name } = Tables[table];
 
   let formData: Record<string, any> = {};
-
-=======
-
-  export let data: NonNullable<PageServerData>;
-  const table = data["table"];
-
-  // @ts-ignore
-  const { headers, name } = Tables[table];
-
-  let formData: Record<string, any> = {};
->>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
 </script>
 
 <main class="w-full">
@@ -58,15 +46,9 @@
   {/each}
 
   <form method="POST" action="?/add">
-<<<<<<< HEAD
-    <input type="hidden" name="table" value={table}/>
-    {#each headers as header (header)}
-      <input type="hidden" name={header} bind:value={formData[header]}/>
-=======
     <input type="hidden" name="table" value={table} />
     {#each headers as header (header)}
       <input type="hidden" name={header} bind:value={formData[header]} />
->>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
     {/each}
     <button
       type="submit"

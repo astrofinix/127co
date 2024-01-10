@@ -3,6 +3,8 @@
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import type { PageServerData } from "./$types";
   import Tables from "$lib/tables";
+  import Alert from "$lib/components/Alert.svelte";
+
 
   export let data: NonNullable<PageServerData>;
 
@@ -11,7 +13,6 @@
   $: department = "cooperative";
   const { name } = Tables[table];
 </script>
-
 <main class="w-full">
   <Breadcrumb
     items={[
@@ -27,6 +28,11 @@
     <div class="flex flex-col h-full">
       <span>Add an Entry</span>
     </div>
+
   </a>
   <Table {table} {rows} />
+
+  <Alert />
+
+
 </main>
