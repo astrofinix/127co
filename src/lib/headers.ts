@@ -27,7 +27,7 @@ export const itemTransactionHeaders = [
   "Supplier_Id",
 ];
 
-export const requestHeaders = [
+export const requestHeaders: Record<string, Table> = [
   "Request_ID",
   "Employee_ID",
   "Request_Type",
