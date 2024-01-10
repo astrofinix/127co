@@ -26,7 +26,7 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   );
 
   const [all_teams] = await db.execute<RowDataPacket[]>(
-    `SELECT * FROM Team WHERE Team_ID;`,
+    `SELECT * FROM Team;`,
   );
 
   return {
@@ -52,6 +52,8 @@ export const actions = {
         "description",
       )}', Project_Status = '${data.get(
         "status",
+      )}', Project_Budget = '${data.get(
+        "budget",
       )}' WHERE Project_ID = ${params.id}`,
     );
 

@@ -43,6 +43,13 @@ export const load: PageServerLoad = async ({ cookies }) => {
     all_projects.push(...projects);
   }
 
+  if (role === "CEO") {
+    const [projects] = await db.execute<RowDataPacket[]>(
+      `SELECT * FROM Project`,
+    );
+    all_projects = projects;
+  }
+
   for (const project of all_projects) {
     const [timeline] = await db.execute<RowDataPacket[]>(
       `SELECT * FROM Timeline WHERE Timeline_ID = ${project["Project_Timeline_ID"]}`,
