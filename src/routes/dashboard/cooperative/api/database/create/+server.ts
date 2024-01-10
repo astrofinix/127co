@@ -62,7 +62,6 @@ export const POST: RequestHandler = async ({ request }) => {
   }
 
   const formData = JSON.parse(data);
-  console.log(formData)
 
   const { success, missingKey } = isDataValid(formData, headers);
   if (!success) {

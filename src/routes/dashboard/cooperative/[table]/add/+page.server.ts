@@ -7,6 +7,10 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   if (!id) throw redirect(302, "/login");
 
   const table = params.table;
+<<<<<<< HEAD
+=======
+  console.log("DITO YON" + table)
+>>>>>>> 1d99c967236541bae72b4a6cab2bc7ff81d69a8d
 
 
   return {
