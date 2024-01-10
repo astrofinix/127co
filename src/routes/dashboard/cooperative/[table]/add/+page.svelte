@@ -3,17 +3,19 @@
   import { Label, Input, Helper } from "flowbite-svelte";
   import type { PageServerData } from "./$types";
   import Tables from "$lib/tables";
+  import Alerts from "$lib/components/Alerts.svelte";
 
   export let data: NonNullable<PageServerData>;
   const table = data["table"];
 
   // @ts-ignore
   const { headers, name } = Tables[table];
-
+  let alerts: Array<{message: string, type: 'fail' | 'success'}> = [];
   let formData: Record<string, any> = {};
 </script>
 
 <main class="w-full">
+  <Alerts data={alerts} />
   <Breadcrumb
     items={[
       { href: "/dashboard/cooperative", text: "Cooperative" },
