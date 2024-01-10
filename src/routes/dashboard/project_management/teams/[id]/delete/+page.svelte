@@ -9,7 +9,7 @@
   <Breadcrumb
     items={[
       { href: "/dashboard/project_management", text: "Project Management" },
-      { href: "/dashboard/project_management/teams", text: "Team" },
+      { href: "/dashboard/project_management/teams", text: "Teams" },
       {
         href: `/dashboard/project_management/teams/${data.team.Team_ID}`,
         text: data.team.Team_Name,

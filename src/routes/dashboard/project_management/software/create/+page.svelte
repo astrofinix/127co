@@ -20,9 +20,10 @@
 <div>
   <Breadcrumb
     items={[
-      { href: "/dashboard/software", text: "Software" },
+      { href: "/dashboard/project_management", text: "Project Management" },
+      { href: "/dashboard/project_management/software", text: "Software" },
       {
-        href: `/dashboard/software/create`,
+        href: `/dashboard/project_management/software/create`,
         text: `Create Software`,
       },
     ]}
@@ -193,7 +194,7 @@
         <span class="text-base">Save</span>
       </button>
       <a
-        href="/dashboard/software"
+        href="/dashboard/project_management/software"
         class={"flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
       >
         <span class="material-symbols-outlined">cancel</span>

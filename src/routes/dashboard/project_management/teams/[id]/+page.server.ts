@@ -29,10 +29,12 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
         `SELECT * FROM Team_Software WHERE Team_ID = ${params.id}`,
     );
 
-  const [[other_members, other_projects, other_software]] = await db.query<RowDataPacket[][]>(
+  const [[other_members, other_projects, other_software]] = await db.query<
+    RowDataPacket[][]
+  >(
     `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Employee.Employee_ID NOT IN (SELECT Employee_ID FROM Employee WHERE Employee_ReportsTo = ${team["Team_Leader_ID"]}) AND Job.Job_Position = 'Application Developer';` +
-    `SELECT * FROM Project WHERE Project_Team_ID != ${params.id};` +
-    `SELECT * FROM Software WHERE Software_Name not in (SELECT Software_Name FROM Team_Software WHERE Team_ID = ${params.id}) AND Software_Version not in (SELECT Software_Version FROM Team_Software WHERE Team_ID = ${params.id})`,
+      `SELECT * FROM Project WHERE Project_Team_ID != ${params.id};` +
+      `SELECT * FROM Software WHERE Software_Name not in (SELECT Software_Name FROM Team_Software WHERE Team_ID = ${params.id}) AND Software_Version not in (SELECT Software_Version FROM Team_Software WHERE Team_ID = ${params.id})`,
   );
 
   team["Team_Leader"] = team_leader[0];
@@ -40,7 +42,7 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   team["Team_Members"] = team_members;
   team["Team_Projects"] = team_projects;
   team["Team_Software"] = team_software;
-  
+
   team["Other_Members"] = other_members;
   team["Other_Projects"] = other_projects;
   team["Other_Software"] = other_software;
