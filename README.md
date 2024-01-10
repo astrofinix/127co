@@ -1,38 +1,25 @@
-# create-svelte
+# 127Co
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Some Notes
 
-## Creating a project
+Each department has a dedicated file for their respective `sql` queries in the `database/` folder. 
+Make sure you source each file on the `database/init.sql` file.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Running the Project
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+This project assumes that you have `mysql` installed and on your `PATH`. 
 
 ```bash
+# install node dependencies
+npm install
+
+# run the frontend and the server
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
-
+You can also invoke
 ```bash
-npm run build
+npm run format
 ```
+to automatically format your code before making a PR.
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
