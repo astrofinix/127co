@@ -73,7 +73,7 @@ INSERT INTO Certificate (Certificate_ID, Employee_ID, Course_ID, Release_Date) V
 ('PRO100230012', 20230012, 'PRO100', '2023-06-10'),
 ('ADV100220001', 20220001, 'ADV100', '2023-04-20');
 
-INSERT INTO Instructor (Employee_ID, Course_ID) VALUES 
+INSERT INTO Instructor (Employee_ID, Course_ID) VALUES --asd
 (20160001, 'JAV100'),
 (20170004, 'LEA100'),
 (20180006, 'FRO100'),
