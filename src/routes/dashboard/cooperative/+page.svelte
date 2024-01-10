@@ -7,7 +7,7 @@
     items={[{ href: "/dashboard/cooperative", text: "Cooperative" }]}
   />
   <a
-    href="/dashboard/cooperative/request"
+    href="/dashboard/cooperative/Request"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> devices </span>
@@ -21,7 +21,7 @@
   </a>
 
   <a
-    href="/dashboard/cooperative/membership"
+    href="/dashboard/cooperative/Membership"
     class="bg-buttonp rounded-lg z-4 border-2 mb-1 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> warehouse </span>
@@ -35,7 +35,7 @@
   </a>
 
   <a
-    href="/dashboard/cooperative/cm_payout"
+    href="/dashboard/cooperative/CM_Payout"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> contract </span>
@@ -51,7 +51,7 @@
   </a>
 
   <a
-    href="/dashboard/cooperative/savingsaccounts"
+    href="/dashboard/cooperative/SavingsAccounts"
     class="bg-buttonp rounded-lg z-4 border-2 mb-1 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> warehouse </span>
@@ -67,7 +67,7 @@
   </a>
 
   <a
-    href="/dashboard/cooperative/cs_transaction"
+    href="/dashboard/cooperative/CS_Transaction"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> contract </span>
@@ -83,7 +83,7 @@
   </a>
 
   <a
-    href="/dashboard/cooperative/loanrecords"
+    href="/dashboard/cooperative/LoanRecords"
     class="bg-buttonp rounded-lg z-4 border-2 mb-1 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> warehouse </span>
@@ -99,7 +99,7 @@
   </a>
 
   <a
-    href="/dashboard/cooperative/cl_transaction"
+    href="/dashboard/cooperative/CL_Transaction"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> contract </span>

@@ -1,72 +1,24 @@
 <script lang="ts">
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import { Label, Input, Helper } from "flowbite-svelte";
-  import {
-    requestHeaders,
-    membershipHeaders,
-    cmPayoutHeaders,
-    savingsHeaders,
-    csTransactionHeaders,
-    loansHeaders,
-    clTransactionHeaders,
-  } from "$lib/headers";
   import type { PageServerData } from "./$types";
+  import Tables from "$lib/tables";
+
+  export let data: NonNullable<PageServerData>;
+  const table = data["table"];
+
+  // @ts-ignore
+  const { headers, name } = Tables[table];
 
   let formData: Record<string, any> = {};
 
-  export let data: NonNullable<PageServerData>;
-
-  const table = data["table"];
-
-  const pageTitle =
-    table === "request"
-      ? "Request"
-      : table === "membership"
-        ? "Membership"
-        : table === "cm_payout"
-          ? "Member Payouts"
-          : table === "savingsaccounts"
-            ? "Savings Accounts"
-            : table === "cs_transaction"
-              ? "Savings Transactions"
-              : table === "loanrecords"
-                ? "Loan Records"
-                : table === "cl_transaction"
-                  ? "Loan Transactions"
-                  : "";
-  const headers =
-    table === "request"
-      ? requestHeaders
-      : table === "membership"
-        ? membershipHeaders
-        : table === "cm_payout"
-          ? cmPayoutHeaders
-          : table === "savingsaccounts"
-            ? savingsHeaders
-            : table === "cs_transaction"
-              ? csTransactionHeaders
-              : table === "loanrecords"
-                ? loansHeaders
-                : table === "cl_transaction"
-                  ? clTransactionHeaders
-                  : "";
-
-  const handleSubmit = async () => {
-    await fetch("/dashboard/cooperative/api/database/create", {
-      method: "POST",
-      body: JSON.stringify({
-        data: JSON.stringify(formData),
-        table: table,
-      }),
-    });
-  };
 </script>
 
 <main class="w-full">
   <Breadcrumb
     items={[
       { href: "/dashboard/cooperative", text: "Cooperative" },
-      { href: `/dashboard/cooperative/${table}/`, text: pageTitle },
+      { href: `/dashboard/cooperative/${table}`, text: name },
       { href: `/dashboard/cooperative/${table}/add`, text: "Add an Entry" },
     ]}
   />
@@ -80,23 +32,30 @@
         class="w-full p-2 border border-gray-300 rounded"
       />
     </div>
-    <Helper class="mt-2 hidden" color="red" id="error-char">
-      <span class="font-medium">Please enter characters only (A-Z, a-z)</span>
-    </Helper>
-    <Helper class="mt-2 hidden" color="red" id="error-num">
-      <span class="font-medium">Please enter numbers only (0-9)</span>
-    </Helper>
-    <Helper class="mt-2 hidden" color="red" id="error-date">
-      <span class="font-medium"
+    <Helper class="mt-2 hidden" color="red" id="error-date"
+      ><span class="font-medium"
         >Please enter in date format only (2023-02-01 09:00:00)</span
-      >
-    </Helper>
+      ></Helper
+    >
+    <Helper class="mt-2 hidden" color="red" id="error-char"
+      ><span class="font-medium">Please enter characters only (A-Z, a-z)</span
+      ></Helper
+    >
+    <Helper class="mt-2 hidden" color="red" id="error-num"
+      ><span class="font-medium">Please enter numbers only (0-9)</span></Helper
+    >
   {/each}
 
-  <button
-    on:click={handleSubmit}
-    class="mt-4 bg-accent hover:bg-primary-600 text-white px-4 py-2 rounded"
-  >
-    Add an Entry
-  </button>
+  <form method="POST" action="?/add">
+    <input type="hidden" name="table" value={table}/>
+    {#each headers as header (header)}
+      <input type="hidden" name={header} bind:value={formData[header]}/>
+    {/each}
+    <button
+      type="submit"
+      class="mt-4 bg-accent hover:bg-primary-600 text-white px-4 py-2 rounded"
+    >
+      Add an Entry
+    </button>
+  </form>
 </main>

@@ -12,7 +12,7 @@
   const rows =  data["data"];
 
   // @ts-ignore
-  const { headers } = Tables[table];
+  const { headers, name } = Tables[table];
 
   let formData: Record<string, any> = {};
 
@@ -28,7 +28,7 @@
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },
-      { href: `/dashboard/supplies/${table}`, text: "Items" },
+      { href: `/dashboard/supplies/${table}`, text: name },
       { href: `/dashboard/supplies/${table}/edit`, text: "Edit an Entry" },
     ]}
   />
@@ -66,5 +66,5 @@
     >
       Edit an Entry
     </button>
-  /<form>
+  <form>
 </main>
