@@ -7,7 +7,7 @@
   import {
     itemHeaders,
     supplierHeaders,
-    transactionHeaders,
+    itemTransactionHeaders,
   } from "$lib/headers";
 
   export let data: NonNullable<PageServerData>;
@@ -42,24 +42,24 @@
   </div>
 
   <Table
-    handleEdit={(id) => handleEdit(id, "Item")}
-    handleDelete={(id) => handleDelete(id, "Item")}
-    primaryKey="Property_Id"
+    handleEdit={(id) => handleEdit(id, "item")}
+    handleDelete={(id) => handleDelete(id, "item")}
+    primaryKey="Item_Id"
     headers={itemHeaders}
     rows={items}
   />
   <Table
-    handleEdit={(id) => handleEdit(id, "Supplier")}
-    handleDelete={(id) => handleDelete(id, "Supplier")}
+    handleEdit={(id) => handleEdit(id, "supplier")}
+    handleDelete={(id) => handleDelete(id, "supplier")}
     primaryKey="Supplier_Id"
     headers={supplierHeaders}
     rows={suppliers}
   />
   <Table
-    handleEdit={(id) => handleEdit(id, "Transaction_History")}
-    handleDelete={(id) => handleDelete(id, "Transaction_History")}
+    handleEdit={(id) => handleEdit(id, "item_transaction")}
+    handleDelete={(id) => handleDelete(id, "item_transaction")}
     primaryKey="Transaction_Id"
-    headers={transactionHeaders}
+    headers={itemTransactionHeaders}
     rows={transactions}
   />
 
@@ -78,7 +78,7 @@
   </a>
 
   <a
-    href="/dashboard/supplies/transactions"
+    href="/dashboard/supplies/item_transaction"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> contract </span>

@@ -1,19 +1,18 @@
 <script lang="ts">
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import { Label, Input, Helper } from "flowbite-svelte";
-  import { supplierHeaders as headers } from "$lib/headers";
+  import type { PageServerData } from "./$types";
+
+  export let data: NonNullable<PageServerData>;
+
+  const table = data["table"];
+  const headers = data["headers"];
 
   let formData: Record<string, any> = {};
 
-  const handleSubmit = async () => {
-    const requestData = {
-      data: JSON.stringify(formData),
-      table: "Supplier",
-    };
-    await fetch("/dashboard/supplies/api/database/create", {
-      method: "POST",
-      body: JSON.stringify(requestData),
-    });
+  const handleSubmit = () => {
+    // Handle form submission logic here
+    console.log(formData);
   };
 </script>
 
@@ -21,8 +20,8 @@
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },
-      { href: "/dashboard/supplies/supplier", text: "Supplier" },
-      { href: "/dashboard/supplies/supplier/edit", text: "Edit an Entry" },
+      { href: `/dashboard/supplies/${table}`, text: "Items" },
+      { href: `/dashboard/supplies/${table}/edit`, text: "Edit an Entry" },
     ]}
   />
   {#each headers as header (header)}

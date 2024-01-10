@@ -1,6 +1,6 @@
 import type { RequestHandler } from "./$types";
 import { json, error } from "@sveltejs/kit";
-import { itemHeaders, transactionHeaders, supplierHeaders } from "$lib/headers";
+import { itemHeaders, itemTransactionHeaders, supplierHeaders } from "$lib/headers";
 
 import db from "$lib/server/database";
 
@@ -13,15 +13,6 @@ const isDataValid = (data: JSON, headers: string[]) => {
   return { success: true, missingKey: "" };
 };
 
-const commaSeparate = (data: string[]) => {
-  return data.reduce((total, key, index) => {
-    if (index == data.length - 1) {
-      return (total += key);
-    }
-    return (total = total + key + ", ");
-  }, "");
-};
-
 export const POST: RequestHandler = async ({ request }) => {
   const { table, data } = await request.json();
 
@@ -32,34 +23,28 @@ export const POST: RequestHandler = async ({ request }) => {
     return error(401, "The field data does not exist");
   }
 
-  const headers =
-    table === "Item"
-      ? itemHeaders
-      : table === "Transaction_History"
-        ? transactionHeaders
-        : table === "Supplier"
-          ? supplierHeaders
-          : undefined;
-
-  if (!headers) {
-    return error(401, `Invalid table ${table}`);
+  let headers;
+  switch (table) {
+    case "item":
+      headers = itemHeaders;
+      break;
+    case "table":
+      headers = itemTransactionHeaders;
+      break;
+    case "supplier":
+      headers = supplierHeaders;
+      break;
+    default:
+      return error(401, `Invalid table ${table}`);
   }
 
   const formData = JSON.parse(data);
-
   const { success, missingKey } = isDataValid(formData, headers);
   if (!success) {
     return error(401, `Missing key ${missingKey}`);
   }
-  const headersSeparated = commaSeparate(headers);
-  const values = commaSeparate(
-    headers.map((key) => {
-      if (formData[key] === "NULL") {
-        return "NULL";
-      }
-      return `'${formData[key]}'`;
-    }),
-  );
+  const headersSeparated = headers.join(" ,");
+  const values = headers.map((key) => formData[key] === "NULL" ?  "NULL" : `'${formData[key]}'`).join(" ,");
 
   await db.execute(
     `INSERT INTO ${table} (${headersSeparated}) VALUES (${values});`,

@@ -1,11 +1,12 @@
+
 export const itemHeaders = [
-  "Property_Id",
-  "Employee_Id",
+  "Item_Id",
   "Item_Type",
-  "Item_Status",
-  "Item_LastUpdated",
-  "Supplier_Id",
   "Item_Location",
+  "Item_LastUpdated",
+  "Item_Status",
+  "Supplier_Id",
+  "Loaned_To",
 ];
 
 export const supplierHeaders = [
@@ -16,11 +17,14 @@ export const supplierHeaders = [
   "Supplier_ContactEmail",
 ];
 
-export const transactionHeaders = [
+export const itemTransactionHeaders = [
   "Transaction_Id",
-  "Property_Id",
   "Transaction_Type",
   "Transaction_Datetime",
+  "Transaction_Maker",
+
+  "Item_Id",
+  "Supplier_Id",
 ];
 
 export const requestHeaders = [

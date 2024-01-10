@@ -3,11 +3,13 @@
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
 
   import type { PageServerData } from "./$types";
-  import { itemHeaders as headers } from "$lib/headers";
 
   export let data: NonNullable<PageServerData>;
 
-  const rows = data["items"];
+  const rows = data["data"];
+  const table = data["table"];
+  const headers = data["headers"];
+  const primaryKey = data["primaryKey"];
 
   const handleEdit = async (id: number) => {};
 
@@ -16,7 +18,7 @@
       method: "POST",
       body: JSON.stringify({
         id,
-        table: "Item",
+        table: table,
       }),
     });
   };
@@ -26,11 +28,11 @@
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },
-      { href: "/dashboard/supplies/item", text: "Items" },
+      { href: `/dashboard/supplies/${table}`, text: "Items" },
     ]}
   />
   <a
-    href="/dashboard/supplies/item/add"
+    href={`/dashboard/supplies/${table}/add`}
     class="bg-buttonp rounded-lg z-4 border-2 w-40 border-outline p-3 mb-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-2"> add </span>
@@ -39,7 +41,7 @@
     </div>
   </a>
   <Table
-    primaryKey="Property_Id"
+    {primaryKey}
     {handleDelete}
     {handleEdit}
     {headers}
