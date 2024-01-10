@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Team_Software (
     Software_Version VARCHAR(50) NOT NULL,
     PRIMARY KEY (Team_ID, Software_Name, Software_Version),
     FOREIGN KEY (Team_ID) REFERENCES Team(Team_ID),
-    FOREIGN KEY (Software_Name, Software_Version) REFERENCES Software(Software_Name, Software_Version)
+    FOREIGN KEY (Software_Name, Software_Version) REFERENCES Software(Software_Name, Software_Version) ON DELETE CASCADE
 );
 
 INSERT INTO Timeline (Timeline_StartDate, Timeline_ExpectedFinishDate, Timeline_FinishDate) VALUES

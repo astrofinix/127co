@@ -42,6 +42,7 @@ export const budgetHeaders = [
   "Budget_Category",
   "Budget_Amount",
   "Property_Id",
+  "Project_Id",
 ];
 
 export const expenseHeaders = [
@@ -62,7 +63,7 @@ export const ctransactionHeaders = [
   "CT_Balance",
   "CT_Total_Paid",
   "CT_Payment_Type",
-  "Contract_Id",
+  "Project_Id",
 ];
 
 export const requestHeaders = [
@@ -129,4 +130,35 @@ export const clTransactionHeaders = [
   "Transaction_Date",
   "Transaction_Time",
   "Amount",
+];
+
+export const clientHeaders = [
+  "Client_ID",
+  "Client_CompanyName",
+  "Client_RepFirstName",
+  "Client_RepLastName",
+  "Client_RepContactNum",
+  "Client_SecRepFirstName",
+  "Client_SecRepLastName",
+  "Client_SecRepContactNum",
+  "Client_Address",
+  "Client_Email",
+  "Client_TelNo",
+];
+
+export const contractHeaders = [
+  "Contract_ID",
+  "Contract_LegalPerson",
+  "Contract_SignedDate",
+  "Contract_StartDate",
+  "Contract_EstimatedEndDate",
+  "Contract_ActualEndDate",
+  "Contract_ProjectDurationYears",
+  "Contract_MaintenanceYears",
+  "Contract_Status",
+  "Contract_FileLink",
+  "Project_ID",
+  "Signatory_ClientID",
+  "Signatory_EmployeeID",
+  "Transaction_ID",
 ];

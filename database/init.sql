@@ -9,10 +9,9 @@ SET GLOBAL event_scheduler = ON;
 
 SOURCE database/human_resources.sql
 SOURCE database/projects.sql
--- SOURCE database/marketing.sql
 
 -- Loners
 SOURCE database/supplies.sql
 source database/cooperative.sql
--- SOURCE database/finance.sql
-source database/bootcamp.sql
+SOURCE database/finance.sql
+SOURCE database/marketing.sql

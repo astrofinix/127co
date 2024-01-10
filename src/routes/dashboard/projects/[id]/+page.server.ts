@@ -25,8 +25,6 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
       `SELECT * FROM Team WHERE Team_ID = ${project["Project_Team_ID"]};`,
   );
 
-  console.log(projects);
-
   return {
     project,
     timeline: timelines[0],

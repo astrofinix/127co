@@ -6,14 +6,35 @@
 </script>
 
 <div class="container">
-  <Breadcrumb items={[
-    { href: "/dashboard/projects", text: "Projects" },
-    { href: `/dashboard/projects/${data.project.Project_ID}`, text: data.project.Project_Name },
-  ]} />
-  <h1>{data.project.Project_Name}</h1>
+  <Breadcrumb
+    items={[
+      { href: "/dashboard/projects", text: "Projects" },
+      {
+        href: `/dashboard/projects/${data.project.Project_ID}`,
+        text: data.project.Project_Name,
+      },
+    ]}
+  />
   
-  <a href="/dashboard/projects/{data.project.Project_ID}/edit">Edit</a>
-  <a href="/dashboard/projects/{data.project.Project_ID}/delete">Delete</a>
+  <div class = "flex justify-between">
+      <h1>{data.project.Project_Name}</h1>
+      <span class="flex space-x-2">
+        <a
+          href="/dashboard/projects/{data.project.Project_ID}/edit"
+          class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+        >
+          <span class="material-symbols-outlined">edit</span>
+          <span class="text-base">Edit</span>
+        </a>
+        <a
+          href="/dashboard/projects/{data.project.Project_ID}/delete"
+          class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+        >
+          <span class="material-symbols-outlined">delete</span>
+          <span class="text-base">Delete</span>
+        </a>
+      </span>
+    </div>
 
   <div class="paragraph-container">
     <div class="paragraph-label">Description:</div>
@@ -21,26 +42,33 @@
   </div>
 
   <div class="paragraph-container">
-    <div class="paragraph-label"><a class="link-label" href="/dashboard/teams/{data.project.Project_Team_ID}">Assigned Team:</a></div>
-    <p><a class="p-link" href="/dashboard/teams/{data.project.Project_Team_ID}">{data.team.Team_Name}</a></p>
+    <div class="paragraph-label">
+      <a
+        class="link-label"
+        href="/dashboard/teams/{data.project.Project_Team_ID}">Assigned Team:</a
+      >
+    </div>
+    <p>
+      <a class="p-link" href="/dashboard/teams/{data.project.Project_Team_ID}"
+        >{data.team.Team_Name}</a
+      >
+    </p>
   </div>
-  
 
   <div class="paragraph-container">
     <div class="paragraph-label">Date Started:</div>
-    <p>{data.timeline.Timeline_StartDate}</p>
+    <p>{data.timeline.Timeline_StartDate.toDateString()}</p>
   </div>
 
   <div class="paragraph-container">
     <div class="paragraph-label">Estimated Date of Completion:</div>
-    <p>{data.timeline.Timeline_ExpectedFinishDate}</p>
+    <p>{data.timeline.Timeline_ExpectedFinishDate.toDateString()}</p>
   </div>
 
   {#if data.project.Project_Status !== "Terminated"}
     <div class="paragraph-container">
       <div class="paragraph-label">Date Completed:</div>
-      <p>{data.timeline.Timeline_FinishDate}</p>
-
+      <p>{data.timeline.Timeline_FinishDate.toDateString()}</p>
     </div>
   {/if}
 
@@ -56,12 +84,12 @@
 </div>
 
 <style>
-.container {
+  .container {
     margin: 0 auto;
   }
 
-.paragraph-container{
- position: relative;
+  .paragraph-container {
+    position: relative;
     border: 1px solid #ddd;
     border-radius: 8px;
     transition: box-shadow 0.3s;
@@ -69,14 +97,14 @@
     padding: 10px;
     display: flex;
     justify-content: space-between;
-}
+  }
 
-.paragraph-container:hover {
+  .paragraph-container:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
-.linked-paragraph {
-  border: 1px solid #ddd; 
+  .linked-paragraph {
+    border: 1px solid #ddd;
     border-radius: 8px;
     transition: box-shadow 0.3s;
     margin-bottom: 10px;
@@ -89,11 +117,9 @@
   .linked-paragraph:hover {
     color: #8c8a21;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
   }
 
   h1 {
-    
     font-size: 4em;
     margin-bottom: 10px;
     font-weight: bold;
@@ -105,31 +131,31 @@
     color: #555;
   }
 
-  p-link{
-     font-size: 1.2em;
+  p-link {
+    font-size: 1.2em;
     display: flex;
     color: #555;
   }
-    .p-link:hover{
+  .p-link:hover {
     color: #e0bf06;
   }
 
-    .paragraph-label {
+  .paragraph-label {
     font-weight: bold;
     color: #555;
-    }
+  }
 
-    .link-label {
+  .link-label {
     font-weight: bold;
     color: #555;
-    }
+  }
 
-    .link-label:hover{
+  .link-label:hover {
     color: #e0bf06;
-    }
+  }
 
-    .edit-button {
-     color: #8c8a21;
+  .edit-button {
+    color: #8c8a21;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -138,7 +164,9 @@
     font-size: 12px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
   }
 
   .paragraph-container:hover .edit-button {
@@ -154,5 +182,4 @@
   .edit-button:hover {
     background-color: #e0bf06;
   }
-
 </style>

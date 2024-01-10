@@ -27,11 +27,11 @@ CREATE TABLE IF NOT EXISTS Contract (
     Contract_MaintenanceYears INT(20) NOT NULL,
     Contract_Status ENUM("Ongoing", "Finished", "Terminated") NOT NULL,
     Contract_FileLink VARCHAR(255) NOT NULL,
-    Project_ID INT NOT NULL,
+    Project_ID INT,
     Signatory_ClientID INT NOT NULL,
     Signatory_EmployeeID INT NOT NULL,
     Transaction_ID INT NOT NULL,
-    FOREIGN KEY (Project_ID) REFERENCES Project(Project_ID),
+    FOREIGN KEY (Project_ID) REFERENCES Project(Project_ID) ON DELETE SET NULL,
     FOREIGN KEY (Signatory_ClientID) REFERENCES Client(Client_ID),
     FOREIGN KEY (Signatory_EmployeeID) REFERENCES Employee(Employee_ID),
     FOREIGN KEY (Transaction_ID) REFERENCES Contract_Transaction(CT_ID)
@@ -56,8 +56,14 @@ VALUES
 -- Insert 5 rows into Contract Table
 INSERT INTO Contract (Contract_ID, Project_ID, Signatory_ClientID, Signatory_EmployeeID, Transaction_ID, Contract_LegalPerson, Contract_SignedDate, Contract_StartDate, Contract_EstimatedEndDate, Contract_ActualEndDate, Contract_ProjectDurationYears, Contract_MaintenanceYears, Contract_Status, Contract_FileLink)
 VALUES
-(4000, 1, 5892, 20160076, 2000, 'Atty. Leni Hillario', '2018-09-18 14:42:00', '2018-10-31 08:15:00', '2020-10-31 23:10:00', '2020-11-30 15:55:00', 2.00, 3, 'finished', 'http://tinyurl.com/ID4000-Contract'),
-(4001, 2, 7310, 20160076, 2001, 'Atty. Chel Diaz', '2018-09-01 03:30:00', '2018-11-28 14:42:00', '2019-11-28 06:45:00', '2019-12-28 09:00:00', 1.00, 4, 'finished', 'http://tinyurl.com/ID4001-Contract'),
-(4002, 3, 2468, 20160076, 2002, 'Atty. Albee Reyes', '2018-09-04 20:18:00', '2018-10-31 08:15:00', '2019-10-31 09:00:00', '2019-11-3 15:55:00', 1.00, 5, 'finished', 'http://tinyurl.com/ID4002-Contract'),
-(4003, 4, 9035, 20160076, 2003, 'Atty. Maki Bao', '2018-09-02 08:15:00', '2018-10-30 14:42:00', '2021-10-30 15:55:00', '2021-11-30 06:45:00', 3.00, 3, 'finished', 'http://tinyurl.com/ID4003-Contract'),
-(4004, 5, 1179, 20160076, 2004, 'Atty. Carlos Alejandre', '2018-09-05 14:42:00', '2018-11-30 03:30:00', '2020-11-30 06:45:00', '2020-12-30 23:10:00', 2.00, 4, 'finished', 'http://tinyurl.com/ID4004-Contract');
+(4000, 1, 5892, 20160076, 20001, 'Atty. Leni Hillario', '2018-09-18 14:42:00', '2018-10-31 08:15:00', '2020-10-31 23:10:00', '2020-11-30 15:55:00', 2.00, 3, 'finished', 'http://tinyurl.com/ID4000-Contract'),
+(4001, 2, 7310, 20160076, 20002, 'Atty. Chel Diaz', '2018-09-01 03:30:00', '2018-11-28 14:42:00', '2019-11-28 06:45:00', '2019-12-28 09:00:00', 1.00, 4, 'finished', 'http://tinyurl.com/ID4001-Contract'),
+(4002, 3, 2468, 20160076, 20003, 'Atty. Albee Reyes', '2018-09-04 20:18:00', '2018-10-31 08:15:00', '2019-10-31 09:00:00', '2019-11-3 15:55:00', 1.00, 5, 'finished', 'http://tinyurl.com/ID4002-Contract'),
+(4003, 4, 9035, 20160076, 20004, 'Atty. Maki Bao', '2018-09-02 08:15:00', '2018-10-30 14:42:00', '2021-10-30 15:55:00', '2021-11-30 06:45:00', 3.00, 3, 'finished', 'http://tinyurl.com/ID4003-Contract'),
+(4004, 5, 1179, 20160076, 20005, 'Atty. Carlos Alejandre', '2018-09-05 14:42:00', '2018-11-30 03:30:00', '2020-11-30 06:45:00', '2020-12-30 23:10:00', 2.00, 4, 'finished', 'http://tinyurl.com/ID4004-Contract'),
+(4005, 6, 6542, 20160076, 20006, 'Atty. Belinda Ramos', '2019-03-21 14:42:00', '2019-04-21 14:30:00', '2021-04-21 17:50:00', null, 2.00, 5, 'ongoing', 'http://tinyurl.com/ID4005-Contract'),
+(4006, 7, 8791, 20160076, 20007, 'Atty. Cecelia Lomeda', '2019-03-25 03:30:00', '2019-04-25 12:00:00', '2022-04-25 14:42:00', null, 3.00, 3, 'ongoing', 'http://tinyurl.com/ID4006-Contract'),
+(4007, 8, 3320, 20160076, 20008, 'Atty. Denise Baruelo', '2019-04-23 05:45:00', '2019-05-23 12:28:00', '2023-05-23 12:30:00', null, 4.00, 4, 'ongoing', 'http://tinyurl.com/ID4007-Contract'),
+(4008, 9, 4685, 20160076, 20009, 'Atty. Steve Reyes', '2019-04-13 15:30:00', '2019-05-13 07:35:00', '2022-05-13 13:30:00', null, 3.00, 5, 'ongoing', 'http://tinyurl.com/ID4008-Contract'),
+(4009, 10, 1256, 20160076, 20010, 'Atty. Ricky Dawes', '2019-05-30 09:30:00', '2019-06-30 09:45:00', '2022-06-30 15:28:00', null, 3.00, 3, 'terminated', 'http://tinyurl.com/ID4009-Contract');
+-- (4010, 11, 7890, 20160076, 20011, 'Atty. Carlos Alejandre', '2020-01-30 06:00:00', '2020-02-25 10:40:00', '2023-02-25 10:35:00', null, 3.00, 4, 'ongoing', 'http://tinyurl.com/ID4010-Contract');

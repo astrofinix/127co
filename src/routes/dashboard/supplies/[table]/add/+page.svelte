@@ -8,11 +8,7 @@
   export let data: NonNullable<PageServerData>;
   $: table = data["table"];
   // @ts-ignore
-<<<<<<< HEAD
-  const { headers, name } = Tables[table];
-=======
-  $: ({name, headers} = Tables[table]);
->>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
+  $: ({ name, headers } = Tables[table]);
 
   let formData: Record<string, any> = {};
 </script>

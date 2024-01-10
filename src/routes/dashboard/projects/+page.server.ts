@@ -44,8 +44,8 @@ export const load: PageServerLoad = async ({ cookies }) => {
   }
 
   for (const project of all_projects) {
-    const [timeline]  = await db.execute<RowDataPacket[]>(
-      `SELECT * FROM Timeline WHERE Timeline_ID = ${project["Project_Timeline_ID"]}`
+    const [timeline] = await db.execute<RowDataPacket[]>(
+      `SELECT * FROM Timeline WHERE Timeline_ID = ${project["Project_Timeline_ID"]}`,
     );
     project["Timeline"] = timeline[0];
   }
@@ -56,7 +56,5 @@ export const load: PageServerLoad = async ({ cookies }) => {
 };
 
 export const actions = {
-  search: async ({request}) => {
-
-  }
+  search: async ({ request }) => {},
 } satisfies Actions;
