@@ -8,6 +8,7 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   if (!id) throw redirect(302, "/login");
 
   const table = Tables[params.table];
+  
   if (!table) {
     return error(401, "unknown table");
   }

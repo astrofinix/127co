@@ -6,9 +6,9 @@
 
   export let data: NonNullable<PageServerData>;
 
-  const rows = data["data"] as Array<Record<string, any>>;
+  $: rows = data["data"] as Array<Record<string, any>>;
   const table = data["table"] as string;
-  const department = "cooperative";
+  $: department = "cooperative";
   const { name } = Tables[table];
 </script>
 
