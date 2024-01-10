@@ -55,8 +55,9 @@
           table: table,
         }),
       });
-    };
 
+     
+    };
   </script>
   
 

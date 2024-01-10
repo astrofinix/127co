@@ -41,19 +41,19 @@ export const POST: RequestHandler = async ({ request }) => {
   }
 
   const headers =
-    table === "Request"
+    table === "request"
       ? requestHeaders
-      : table === "Membership"
+      : table === "membership"
         ? membershipHeaders
-        : table === "CM_Payout"
+        : table === "cm_payout"
           ? cmPayoutHeaders
-          : table === "SavingsAccounts"
+          : table === "savingsaccounts"
             ? savingsHeaders
-            : table === "CS_Transaction"
+            : table === "cs_transaction"
               ? csTransactionHeaders
-              : table === "LoanRecords"
+              : table === "loanrecords"
                 ? loansHeaders
-                : table === "CL_Transaction"
+                : table === "cl_transaction"
                   ? clTransactionHeaders
                   : undefined;
 
@@ -62,6 +62,7 @@ export const POST: RequestHandler = async ({ request }) => {
   }
 
   const formData = JSON.parse(data);
+  console.log(formData)
 
   const { success, missingKey } = isDataValid(formData, headers);
   if (!success) {
@@ -77,7 +78,7 @@ export const POST: RequestHandler = async ({ request }) => {
     }),
   );
 
-  await db.query(
+  await db.execute(
     `INSERT INTO ${table} (${headersSeparated}) VALUES (${values});`,
   );
   return json({ success: true });
