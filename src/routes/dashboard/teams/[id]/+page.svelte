@@ -29,7 +29,7 @@
     items={[
       { href: "/dashboard/teams", text: "Teams" },
       {
-        href: `/dashboard/teams/${data.team.Team_Name}`,
+        href: `/dashboard/teams/${data.team.Team_ID}`,
         text: data.team.Team_Name,
       },
     ]}
