@@ -4,25 +4,21 @@
 
 <main class="w-full">
   <Breadcrumb
-    items={[{ href: "/dashboard/project_management", text: "Project Management" }]}
+    items={[
+      { href: "/dashboard/project_management", text: "Project Management" },
+    ]}
   />
   <!-- Teams -->
   <a
     href="/dashboard/project_management/teams"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
-    <span class="text-3xl material-symbols-outlined mr-5">
-      groups
-    </span>
+    <span class="text-3xl material-symbols-outlined mr-5"> groups </span>
     <div class="flex w-full flex-col h-full">
       <span>Teams</span>
-      <span class="text-subtext z-4"
-        >Show the list of current teams.</span
-      >
+      <span class="text-subtext z-4">Show the list of current teams.</span>
     </div>
-    <span
-      class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-    >
+    <span class="relative z-4 right-100 bottom-0 material-symbols-outlined">
       navigate_next
     </span>
   </a>
@@ -38,9 +34,7 @@
         >Explore and manage project-related information.</span
       >
     </div>
-    <span
-      class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-    >
+    <span class="relative z-4 right-100 bottom-0 material-symbols-outlined">
       navigate_next
     </span>
   </a>
@@ -56,9 +50,7 @@
         >View and manage software-related information.</span
       >
     </div>
-    <span
-      class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-    >
+    <span class="relative z-4 right-100 bottom-0 material-symbols-outlined">
       navigate_next
     </span>
   </a>

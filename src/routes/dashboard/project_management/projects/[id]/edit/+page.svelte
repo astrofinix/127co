@@ -156,7 +156,8 @@
         <span class="text-base">Cancel</span>
       </a>
       <a
-        href="/dashboard/project_management/projects/{data.project.Project_ID}/delete"
+        href="/dashboard/project_management/projects/{data.project
+          .Project_ID}/delete"
         class={"flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
       >
         <span class="material-symbols-outlined">delete</span>

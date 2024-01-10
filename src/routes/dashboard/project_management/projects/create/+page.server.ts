@@ -41,6 +41,9 @@ export const actions = {
       )}');`,
     );
 
-    throw redirect(302, `/dashboard/project_management/projects/${project_created.insertId}`);
+    throw redirect(
+      302,
+      `/dashboard/project_management/projects/${project_created.insertId}`,
+    );
   },
 } satisfies Actions;

@@ -27,8 +27,8 @@
     <form method="POST">
       <button type="submit">Yes</button>
       <a
-        href="/dashboard/project_management/software/{data.software.Software_Name}_{data.software
-          .Software_Version}">No</a
+        href="/dashboard/project_management/software/{data.software
+          .Software_Name}_{data.software.Software_Version}">No</a
       >
     </form>
   </div>

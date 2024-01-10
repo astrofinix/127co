@@ -92,7 +92,8 @@
         <ul class="projectname">
           {#each data.team.Team_Projects as project}
             <li>
-              <a href="/dashboard/project_management/projects/{project.Project_ID}"
+              <a
+                href="/dashboard/project_management/projects/{project.Project_ID}"
                 >{project.Project_Name}</a
               >
             </li>

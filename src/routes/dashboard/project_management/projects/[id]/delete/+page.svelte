@@ -25,7 +25,9 @@
     <p class="mb-4">Are you sure you want to delete this project?</p>
     <form method="POST">
       <button type="submit">Yes</button>
-      <a href="/dashboard/project_management/projects/{data.project.Project_ID}">Cancel</a>
+      <a href="/dashboard/project_management/projects/{data.project.Project_ID}"
+        >Cancel</a
+      >
     </form>
   </div>
 </div>

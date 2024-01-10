@@ -34,6 +34,9 @@ export const actions = {
       )}', ${data.get("leader")})`,
     );
 
-    throw redirect(302, `/dashboard/project_management/teams/${team_created.insertId}`);
+    throw redirect(
+      302,
+      `/dashboard/project_management/teams/${team_created.insertId}`,
+    );
   },
 } satisfies Actions;

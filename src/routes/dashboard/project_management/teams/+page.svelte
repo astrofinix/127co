@@ -35,7 +35,12 @@
 </script>
 
 <div class="container">
-  <Breadcrumb items={[{ href: "/dashboard/project_management", text: "Project Management" }, { href: "/dashboard/project_management/teams", text: "Teams" }]} />
+  <Breadcrumb
+    items={[
+      { href: "/dashboard/project_management", text: "Project Management" },
+      { href: "/dashboard/project_management/teams", text: "Teams" },
+    ]}
+  />
   <div class="flex items-center justify-center">
     <div class="flex items-center">
       <input

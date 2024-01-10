@@ -31,7 +31,9 @@ export const actions = {
 
     throw redirect(
       302,
-      `/dashboard/project_management/software/${data.get("name")}_${data.get("version")}`,
+      `/dashboard/project_management/software/${data.get("name")}_${data.get(
+        "version",
+      )}`,
     );
   },
 } satisfies Actions;

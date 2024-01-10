@@ -205,16 +205,16 @@
         <span class="text-base">Save</span>
       </button>
       <a
-        href="/dashboard/project_management/projects/{data.software.Software_Name}_{data.software
-          .Software_Version}"
+        href="/dashboard/project_management/projects/{data.software
+          .Software_Name}_{data.software.Software_Version}"
         class={"flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
       >
         <span class="material-symbols-outlined">cancel</span>
         <span class="text-base">Cancel</span>
       </a>
       <a
-        href="/dashboard/project_management/projects/{data.software.Software_Name}_{data.software
-          .Software_Version}/delete"
+        href="/dashboard/project_management/projects/{data.software
+          .Software_Name}_{data.software.Software_Version}/delete"
         class={"flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
       >
         <span class="material-symbols-outlined">delete</span>

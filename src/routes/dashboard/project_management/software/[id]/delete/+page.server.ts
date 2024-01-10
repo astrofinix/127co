@@ -18,7 +18,8 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
     }' AND Software_Version = '${params.id.split("_")[1]}';`,
   );
 
-  if (softwares.length === 0) throw redirect(302, "/dashboard/project_management/software");
+  if (softwares.length === 0)
+    throw redirect(302, "/dashboard/project_management/software");
 
   const software = softwares[0];
 

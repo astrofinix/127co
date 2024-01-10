@@ -16,7 +16,8 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
     `SELECT * FROM Project WHERE Project_ID = ${params.id}`,
   );
 
-  if (projects.length === 0) throw redirect(302, "/dashboard/project_management/projects");
+  if (projects.length === 0)
+    throw redirect(302, "/dashboard/project_management/projects");
 
   const project = projects[0];
 
