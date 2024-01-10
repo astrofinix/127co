@@ -24,10 +24,10 @@ CREATE TABLE IF NOT EXISTS Project (
     Project_Budget INT NOT NULL,
     Project_Status VARCHAR(50) NOT NULL,
     Project_Timeline_ID INT NOT NULL,
-    Project_Team_ID INT NOT NULL,
+    Project_Team_ID INT,
     PRIMARY KEY (Project_ID),
     FOREIGN KEY (Project_Timeline_ID) REFERENCES Timeline(Timeline_ID),
-    FOREIGN KEY (Project_Team_ID) REFERENCES Team(Team_ID)
+    FOREIGN KEY (Project_Team_ID) REFERENCES Team(Team_ID) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS Software (
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS Team_Software (
     Software_Name VARCHAR(50) NOT NULL,
     Software_Version VARCHAR(50) NOT NULL,
     PRIMARY KEY (Team_ID, Software_Name, Software_Version),
-    FOREIGN KEY (Team_ID) REFERENCES Team(Team_ID),
+    FOREIGN KEY (Team_ID) REFERENCES Team(Team_ID) ON DELETE CASCADE,
     FOREIGN KEY (Software_Name, Software_Version) REFERENCES Software(Software_Name, Software_Version) ON DELETE CASCADE
 );
 

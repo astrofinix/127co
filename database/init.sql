@@ -16,7 +16,7 @@ source database/cooperative.sql
 SOURCE database/finance.sql
 SOURCE database/marketing.sql
 <<<<<<< HEAD
---
+
 =======
 
 >>>>>>> 65c687218092fe750edbc7adca79f43581aeeb43
