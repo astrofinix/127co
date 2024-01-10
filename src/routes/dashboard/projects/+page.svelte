@@ -67,9 +67,7 @@
       />
     </div>
   </div>
-  <div
-    class="project grid lg:grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-2 sm:w-full"
-  >
+  <div class="project grid lg:grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-2 sm:w-full">
     {#if show_add}
       <a
         href="/dashboard/projects/create"

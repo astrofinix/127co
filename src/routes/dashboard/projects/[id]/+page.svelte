@@ -15,26 +15,26 @@
       },
     ]}
   />
-
-  <div class="flex justify-between">
-    <h1>{data.project.Project_Name}</h1>
-    <span class="flex space-x-2">
-      <a
-        href="/dashboard/projects/{data.project.Project_ID}/edit"
-        class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
-      >
-        <span class="material-symbols-outlined">edit</span>
-        <span class="text-base">Edit</span>
-      </a>
-      <a
-        href="/dashboard/projects/{data.project.Project_ID}/delete"
-        class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
-      >
-        <span class="material-symbols-outlined">delete</span>
-        <span class="text-base">Delete</span>
-      </a>
-    </span>
-  </div>
+  
+  <div class = "flex justify-between">
+      <h1>{data.project.Project_Name}</h1>
+      <span class="flex space-x-2">
+        <a
+          href="/dashboard/projects/{data.project.Project_ID}/edit"
+          class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+        >
+          <span class="material-symbols-outlined">edit</span>
+          <span class="text-base">Edit</span>
+        </a>
+        <a
+          href="/dashboard/projects/{data.project.Project_ID}/delete"
+          class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+        >
+          <span class="material-symbols-outlined">delete</span>
+          <span class="text-base">Delete</span>
+        </a>
+      </span>
+    </div>
 
   <div class="paragraph-container">
     <div class="paragraph-label">Description:</div>
@@ -50,7 +50,7 @@
     </div>
     <p>
       <a class="p-link" href="/dashboard/teams/{data.project.Project_Team_ID}"
-        >{data.team ? data.team.Team_Name : ""}</a
+        >{data.team.Team_Name}</a
       >
     </p>
   </div>

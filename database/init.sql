@@ -15,4 +15,8 @@ SOURCE database/supplies.sql
 source database/cooperative.sql
 SOURCE database/finance.sql
 SOURCE database/marketing.sql
-SOURCE database/bootcamp.sql--
+<<<<<<< HEAD
+
+=======
+
+>>>>>>> 65c687218092fe750edbc7adca79f43581aeeb43

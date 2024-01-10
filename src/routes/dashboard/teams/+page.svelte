@@ -6,18 +6,14 @@
   export let data: PageData;
 
   let query: string = "";
-  let selected_leader: string = "";
+  let selected_leader : string = "";
   let filtered_teams = data.teams;
   let show_add = true;
 
   $: if (query || selected_leader) {
-    filtered_teams = data.teams.filter(
-      (team: any) =>
-        team.Team_Name.toLowerCase().includes(query.toLowerCase()) &&
-        (team.Team_Leader_Name.toLowerCase().includes(
-          selected_leader.toLowerCase(),
-        ) ||
-          selected_leader === ""),
+    filtered_teams = data.teams.filter((team: any) =>
+      team.Team_Name.toLowerCase().includes(query.toLowerCase()) &&
+      (team.Team_Leader_Name.toLowerCase().includes(selected_leader.toLowerCase()) || selected_leader === "")
     );
     show_add = false;
   } else {
@@ -25,41 +21,29 @@
     show_add = true;
   }
 
-  let team_leaders = [
-    ...new Set(
-      filtered_teams.map((team) =>
-        JSON.stringify(team.Team_Leader_Name).replace(/"/g, ""),
-      ),
-    ),
-  ];
+  let team_leaders = [...new Set(filtered_teams.map(team => JSON.stringify(team.Team_Leader_Name).replace(/"/g, '')))];
+
 </script>
 
 <div class="container">
   <Breadcrumb items={[{ href: "/dashboard/teams", text: "Teams" }]} />
   <div class="flex items-center justify-center">
-    <div class="flex items-center">
+    <div class="flex items-center mr-2">
       <input
-        class="text-gray-700 block rounded-md px-4 py-2 text-sm mr-2"
+        class = "py-2 text-gray-700 block rounded-md px-4 py-2 text-sm "
         name="search"
         type="text"
         placeholder="Search"
         aria-label="Search"
         bind:value={query}
       />
-      <Menu
-        name="Select Leader"
-        items={team_leaders}
-        bind:selected_item={selected_leader}
-      />
+      <Menu name="Select Leader" items={team_leaders} bind:selected_item={selected_leader} />
     </div>
   </div>
-  <div
-    class="project grid lg:grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-2 sm:w-full"
-  >
+  <div class="project grid grid-cols-3 gap-5">
     {#if show_add}
       <a
-        href="/dashboard/teams/create"
-        class="block sm:max-w-full md:max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+        href="/dashboard/teams/create" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       >
         <span class="material-symbols-outlined">add</span>
         <div class="flex flex-col h-full">
@@ -70,7 +54,7 @@
     {#each filtered_teams as teams}
       <a
         href="/dashboard/teams/{teams.Team_ID}"
-        class="block sm:max-w-full md:max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       >
         <div class="flex items-center mb-2">
           <p
