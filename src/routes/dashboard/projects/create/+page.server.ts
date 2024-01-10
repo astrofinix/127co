@@ -34,13 +34,13 @@ export const actions = {
     const [project_created] = await db.execute<ResultSetHeader[]>(
       `INSERT INTO Project (Project_Name, Project_Description, Project_Type, Project_Budget, Project_Status, Project_Timeline_ID, Project_Team_ID) VALUES ('${data.get(
         "name",
-      )}', '${data.get("description")}', '${data.get(
-        "type",
-      )}', '${data.get("budget")}', '${data.get(
-        "status",
-      )}', '${timeline_created.insertId}', '${data.get("team")}');`,
+      )}', '${data.get("description")}', '${data.get("type")}', '${data.get(
+        "budget",
+      )}', '${data.get("status")}', '${timeline_created.insertId}', '${data.get(
+        "team",
+      )}');`,
     );
 
     throw redirect(302, `/dashboard/projects/${project_created.insertId}`);
-  }
+  },
 } satisfies Actions;

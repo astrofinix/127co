@@ -27,12 +27,11 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
         `SELECT * FROM Project WHERE Project_Team_ID = ${params.id};` +
         `SELECT * FROM Team_Software WHERE Team_ID = ${params.id}`,
     );
-  
-    const [[other_projects, other_software]] =
-    await db.query<RowDataPacket[][]>(
-        `SELECT * FROM Project WHERE Project_Team_ID != ${params.id};` +
-        `SELECT * FROM Software WHERE Software_Name not in (SELECT Software_Name FROM Team_Software WHERE Team_ID = ${params.id}) AND Software_Version not in (SELECT Software_Version FROM Team_Software WHERE Team_ID = ${params.id})`,
-    );
+
+  const [[other_projects, other_software]] = await db.query<RowDataPacket[][]>(
+    `SELECT * FROM Project WHERE Project_Team_ID != ${params.id};` +
+      `SELECT * FROM Software WHERE Software_Name not in (SELECT Software_Name FROM Team_Software WHERE Team_ID = ${params.id}) AND Software_Version not in (SELECT Software_Version FROM Team_Software WHERE Team_ID = ${params.id})`,
+  );
 
   team["Team_Leader"] = team_leader[0];
   team["Team_Members"] = team_members;
@@ -47,15 +46,14 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 };
 
 export const actions = {
-  add_member: async ({ request, params }) => {
-  },
+  add_member: async ({ request, params }) => {},
   add_project: async ({ request, params }) => {
     const data = await request.formData();
 
     const [project_added] = await db.execute<ResultSetHeader[]>(
-      `UPDATE Project SET Project_Team_ID = ${params.id} WHERE Project_ID = ${data.get(
-        "project",
-      )}`,
+      `UPDATE Project SET Project_Team_ID = ${
+        params.id
+      } WHERE Project_ID = ${data.get("project")}`,
     );
   },
   add_software: async ({ request, params }) => {
@@ -73,5 +71,5 @@ export const actions = {
     const [software_removed] = await db.execute<ResultSetHeader[]>(
       `DELETE FROM Team_Software WHERE Team_ID = ${params.id} AND Software_Name = '${software[0]}' AND Software_Version = '${software[1]}'`,
     );
-  }
+  },
 } satisfies Actions;

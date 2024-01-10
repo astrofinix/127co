@@ -32,7 +32,8 @@
       />
     </div>
     <div class="flex items-center">
-      <label class="text-sm text-gray-900 p-1 pl-2 pr-2" for="type">Team Leader:</label
+      <label class="text-sm text-gray-900 p-1 pl-2 pr-2" for="type"
+        >Team Leader:</label
       >
       <select
         class="text-sm border-2 rounded-full border-gray-400 text-gray-700 p-1 pl-2 pr-2"
@@ -41,7 +42,11 @@
         value={data.team.Team_Leader_ID}
       >
         {#each data.leaders as user}
-          <option value={user.Employee_ID}>{user.Employee_FirstName} {user.Employee_MiddleName ? user.Employee_MiddleName : ""} {user.Employee_LastName}</option>
+          <option value={user.Employee_ID}
+            >{user.Employee_FirstName}
+            {user.Employee_MiddleName ? user.Employee_MiddleName : ""}
+            {user.Employee_LastName}</option
+          >
         {/each}
       </select>
     </div>

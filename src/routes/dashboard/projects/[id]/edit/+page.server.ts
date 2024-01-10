@@ -25,9 +25,7 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
       `SELECT * FROM Team WHERE Team_ID = ${project["Project_Team_ID"]};`,
   );
 
-  const [all_teams] = await db.execute<RowDataPacket[]>(
-    `SELECT * FROM Team;`,
-  );
+  const [all_teams] = await db.execute<RowDataPacket[]>(`SELECT * FROM Team;`);
 
   return {
     project,
@@ -44,17 +42,15 @@ export const actions = {
     const [project_edited] = await db.execute<ResultSetHeader[]>(
       `UPDATE Project SET Project_Name = '${data.get(
         "name",
-      )}', Project_Type = '${data.get(
-        "type",
-      )}', Project_Team_ID = ${data.get(
+      )}', Project_Type = '${data.get("type")}', Project_Team_ID = ${data.get(
         "team",
       )}, Project_Description = '${data.get(
         "description",
       )}', Project_Status = '${data.get(
         "status",
-      )}', Project_Budget = '${data.get(
-        "budget",
-      )}' WHERE Project_ID = ${params.id}`,
+      )}', Project_Budget = '${data.get("budget")}' WHERE Project_ID = ${
+        params.id
+      }`,
     );
 
     const [project] = await db.execute<RowDataPacket[]>(

@@ -20,13 +20,15 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
   const team = teams[0];
 
-  const [[team_leader, team_members, team_software, leaders, members, softwares]] = await db.query<RowDataPacket[][]>(
+  const [
+    [team_leader, team_members, team_software, leaders, members, softwares],
+  ] = await db.query<RowDataPacket[][]>(
     `SELECT * FROM Employee WHERE Employee_ID = ${team["Team_Leader_ID"]};` +
-    `SELECT * FROM Employee WHERE Employee_Reportsto = ${team["Team_Leader_ID"]};` +
-    `SELECT * FROM Team_Software WHERE Team_ID = ${params.id};` +
-    `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Job.Job_Position = 'Project Manager';` +
-    `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Job.Job_Position = 'Application Developer';` +
-    `SELECT * FROM Software;`,
+      `SELECT * FROM Employee WHERE Employee_Reportsto = ${team["Team_Leader_ID"]};` +
+      `SELECT * FROM Team_Software WHERE Team_ID = ${params.id};` +
+      `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Job.Job_Position = 'Project Manager';` +
+      `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Job.Job_Position = 'Application Developer';` +
+      `SELECT * FROM Software;`,
   );
   return {
     team,
@@ -46,9 +48,7 @@ export const actions = {
     const [team_edited] = await db.execute<ResultSetHeader[]>(
       `UPDATE Team SET Team_Name = '${data.get(
         "name",
-      )}', Team_Leader_ID = ${data.get(
-        "leader",
-      )} WHERE Team_ID = ${params.id}`,
+      )}', Team_Leader_ID = ${data.get("leader")} WHERE Team_ID = ${params.id}`,
     );
 
     throw redirect(302, `/dashboard/teams/${params.id}`);

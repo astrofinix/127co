@@ -15,19 +15,23 @@
       },
     ]}
   />
-  <div class = "flex justify-between">
-    <h1>{data.software.Software_Name}
-      {data.software.Software_Version}</h1>
+  <div class="flex justify-between">
+    <h1>
+      {data.software.Software_Name}
+      {data.software.Software_Version}
+    </h1>
     <span class="flex space-x-2">
       <a
-        href="/dashboard/software/{data.software.Software_Name}_{data.software.Software_Version}/edit"
+        href="/dashboard/software/{data.software.Software_Name}_{data.software
+          .Software_Version}/edit"
         class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
       >
         <span class="material-symbols-outlined">edit</span>
         <span class="text-base">Edit</span>
       </a>
       <a
-        href="/dashboard/software/{data.software.Software_Name}_{data.software.Software_Version}/delete"
+        href="/dashboard/software/{data.software.Software_Name}_{data.software
+          .Software_Version}/delete"
         class={"inline-block flex text-sm my-0.5 mx-4 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
       >
         <span class="material-symbols-outlined">delete</span>

@@ -128,7 +128,8 @@
       </select>
     </div>
     <div class="flex items-center">
-      <label class="text-sm text-gray-900 p-1 pl-2 pr-2" for="name">Budget:</label
+      <label class="text-sm text-gray-900 p-1 pl-2 pr-2" for="name"
+        >Budget:</label
       >
       <input
         class="text-sm border-2 rounded-full border-gray-400 text-gray-700 p-1 pl-2 pr-2"

@@ -12,33 +12,26 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   if (!["CEO", "Project Manager", "Application Developer"].includes(role!))
     throw redirect(302, "/dashboard");
 
-return {};
+  return {};
 };
 
 export const actions = {
-    default: async ({ request, params }) => {
-      const data = await request.formData();
-  
-      const [software_created] = await db.execute<ResultSetHeader[]>(
-        `INSERT INTO Software VALUES ('${data.get(
-          "name",
-        )}', '${data.get(
-          "version",
-        )}', '${data.get(
-          "type",
-        )}', '${data.get(
-          "platform",
-        )}', '${data.get(
-          "size",
-        )} ${data.get(
-          "size_type",
-        )}', '${data.get(
-          "publisher",
-        )}', '${data.get(
-          "license"
-        )}');`,
-      );
-  
-      throw redirect(302, `/dashboard/software/${data.get("name")}_${data.get("version")}`);
-    },
-  } satisfies Actions;
+  default: async ({ request, params }) => {
+    const data = await request.formData();
+
+    const [software_created] = await db.execute<ResultSetHeader[]>(
+      `INSERT INTO Software VALUES ('${data.get("name")}', '${data.get(
+        "version",
+      )}', '${data.get("type")}', '${data.get("platform")}', '${data.get(
+        "size",
+      )} ${data.get("size_type")}', '${data.get("publisher")}', '${data.get(
+        "license",
+      )}');`,
+    );
+
+    throw redirect(
+      302,
+      `/dashboard/software/${data.get("name")}_${data.get("version")}`,
+    );
+  },
+} satisfies Actions;

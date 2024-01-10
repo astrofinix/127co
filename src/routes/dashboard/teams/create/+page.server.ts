@@ -12,11 +12,10 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   if (!["CEO", "Project Manager", "Application Developer"].includes(role!))
     throw redirect(302, "/dashboard");
 
-
   const [[leaders, members, softwares]] = await db.query<RowDataPacket[][]>(
     `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Job.Job_Position = 'Project Manager';` +
-    `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Job.Job_Position = 'Application Developer';` +
-    `SELECT * FROM Software;`,
+      `SELECT * FROM Employee INNER JOIN Job ON Employee.Employee_ID = Job.Employee_ID WHERE Job.Job_Position = 'Application Developer';` +
+      `SELECT * FROM Software;`,
   );
   return {
     leaders,

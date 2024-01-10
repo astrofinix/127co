@@ -13,7 +13,9 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
     throw redirect(302, "/dashboard");
 
   const [softwares] = await db.execute<RowDataPacket[]>(
-    `SELECT * FROM Software WHERE Software_Name = '${params.id.split("_")[0]}' AND Software_Version = '${params.id.split("_")[1]}';`,
+    `SELECT * FROM Software WHERE Software_Name = '${
+      params.id.split("_")[0]
+    }' AND Software_Version = '${params.id.split("_")[1]}';`,
   );
 
   const [all_softwares] = await db.execute<RowDataPacket[]>(
@@ -22,7 +24,7 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
   return {
     software: softwares[0],
-    softwares: all_softwares
+    softwares: all_softwares,
   };
 };
 
@@ -31,25 +33,24 @@ export const actions = {
     const data = await request.formData();
 
     const [software_edited] = await db.execute<ResultSetHeader[]>(
-        `UPDATE Software SET Software_Name = '${data.get(
-            "name",
-        )}', Software_Version = '${data.get(
-            "version",
-        )}', Software_Type = '${data.get(
-            "type",
-        )}', Software_OS = '${data.get(
-            "platform",
-        )}', Software_Size = '${data.get(
-            "size",
-        )} ${data.get(
-            "size_type",
-        )}', Software_Publisher = '${data.get(
-            "publisher",
-        )}', Software_License = '${data.get(
-            "license"
-        )}' WHERE Software_Name = '${params.id.split("_")[0]}' AND Software_Version = '${params.id.split("_")[1]}';`,
+      `UPDATE Software SET Software_Name = '${data.get(
+        "name",
+      )}', Software_Version = '${data.get(
+        "version",
+      )}', Software_Type = '${data.get("type")}', Software_OS = '${data.get(
+        "platform",
+      )}', Software_Size = '${data.get("size")} ${data.get(
+        "size_type",
+      )}', Software_Publisher = '${data.get(
+        "publisher",
+      )}', Software_License = '${data.get("license")}' WHERE Software_Name = '${
+        params.id.split("_")[0]
+      }' AND Software_Version = '${params.id.split("_")[1]}';`,
     );
 
-    throw redirect(302, `/dashboard/software/${data.get("name")}_${data.get("version")}`);
+    throw redirect(
+      302,
+      `/dashboard/software/${data.get("name")}_${data.get("version")}`,
+    );
   },
 } satisfies Actions;

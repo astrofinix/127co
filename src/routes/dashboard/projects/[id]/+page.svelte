@@ -15,8 +15,8 @@
       },
     ]}
   />
-  
-  <div class = "flex justify-between">
+
+  <div class="flex justify-between">
     <h1>{data.project.Project_Name}</h1>
     <span class="flex space-x-2">
       <a
