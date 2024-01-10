@@ -10,7 +10,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
   const role = cookies.get("role");
 
   let links = [
-    { href: "/", label: "Overview", icon: "home" },
+    { href: "/dashboard", label: "Overview", icon: "home" },
     {
       href: "/dashboard/human_resources",
       label: "Human Resources",
@@ -51,7 +51,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
     case "Project Manager":
     case "Application Developer":
       links = [
-        { href: "/", label: "Home", icon: "home" },
+        { href: "/dashboard", label: "Home", icon: "home" },
         {
           href: "/dashboard/projects",
           label: "Projects",
