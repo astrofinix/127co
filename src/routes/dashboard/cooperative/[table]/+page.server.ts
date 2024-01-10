@@ -18,21 +18,21 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 };
 
 export const actions: Actions = {
-  delete: async ({cookies, request}) => {
+  delete: async ({ cookies, request }) => {
     const data = await request.formData();
-    const id = data.get('id');
-    const tableName = data.get('table') as string;
+    const id = data.get("id");
+    const tableName = data.get("table") as string;
     const table = Tables[tableName];
 
     if (!table) {
-      return error(404, {message: "invalid table"});
+      return error(404, { message: "invalid table" });
     }
 
     console.log("INVOKED");
-    await db.execute(`DELETE FROM ${tableName} WHERE ${table.primaryKey}=${id}`);
+    await db.execute(
+      `DELETE FROM ${tableName} WHERE ${table.primaryKey}=${id}`,
+    );
 
     return { success: true };
   },
-
-} 
-
+};

@@ -83,7 +83,7 @@ INSERT INTO Project (Project_Name, Project_Description, Project_Type, Project_Bu
 ('Senco', 'Mobile Application for the Blind', 'Mobile Application', 500000, 'Done', 5, 5),
 ('Hydra', 'E-Commerce Application', 'Web Application', 600000, 'In Development', 6, 6),
 ('Helios', 'Smart Home Automation System', 'Mobile Application', 600000, 'For Presentation', 7, 7),
-('Aqua', 'Library Management Software', 'Stand-alone Systems', 300000, 'For Deployment', 8, 8),
+('Aqua', 'Library Management Software', 'Standalone Systems', 300000, 'For Deployment', 8, 8),
 ('Medicord', 'Medical Records Management System', 'Web Application', 200000, 'For Monitoring', 9, 9),
 ('Traveler', 'Travel Companion Application', 'Mobile Application', 600000, 'Terminated', 10, 10),
 ('Talk', 'Language Learning Application', 'Mobile Application', 600000, 'For Monitoring', 11, 10);

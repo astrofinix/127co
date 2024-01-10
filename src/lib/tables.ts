@@ -1,9 +1,9 @@
 export interface Table {
-  headers: string[],
-  primaryKey: string,
-  department: string,
-  name: string,
-};
+  headers: string[];
+  primaryKey: string;
+  department: string;
+  name: string;
+}
 
 const Tables: Record<string, Table> = {
   Item: {
@@ -18,7 +18,7 @@ const Tables: Record<string, Table> = {
     ],
     department: "supplies",
     primaryKey: "Item_Id",
-    name: "Item"
+    name: "Item",
   },
   Supplier: {
     headers: [
@@ -49,12 +49,7 @@ const Tables: Record<string, Table> = {
   },
 
   Request: {
-    headers: [
-      "Request_ID",
-      "Employee_ID",
-      "Request_Type",
-      "Request_Status",
-    ],
+    headers: ["Request_ID", "Employee_ID", "Request_Type", "Request_Status"],
     department: "cooperative",
     primaryKey: "Request_ID",
     name: "Request",
@@ -98,7 +93,7 @@ const Tables: Record<string, Table> = {
     ],
     department: "cooperative",
     primaryKey: "Savings_ID",
-    name: "Savings Accounts"
+    name: "Savings Accounts",
   },
 
   CS_Transaction: {
@@ -148,11 +143,6 @@ const Tables: Record<string, Table> = {
     primaryKey: "CLTransaction_ID",
     name: "Loan Transactions",
   },
-
-
-
-
-
-}
+};
 
 export default Tables;

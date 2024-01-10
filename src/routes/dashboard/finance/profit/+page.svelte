@@ -4,8 +4,12 @@
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
 
   import type { PageServerData } from "./$types";
-  import { salaryHeaders, budgetHeaders, expenseHeaders, ctransactionHeaders } from "$lib/headers";
-
+  import {
+    salaryHeaders,
+    budgetHeaders,
+    expenseHeaders,
+    ctransactionHeaders,
+  } from "$lib/headers";
 
   export let data: NonNullable<PageServerData>;
 
@@ -13,44 +17,44 @@
   let table = data["table"];
 
   const headers =
-  table === "salary"
-    ? salaryHeaders
-    : table === "budget"
-      ? budgetHeaders
-      : table === "expenditure"
-        ? expenseHeaders
-        : table === "contract_transaction"
-          ? ctransactionHeaders
-          : undefined;
-  
+    table === "salary"
+      ? salaryHeaders
+      : table === "budget"
+        ? budgetHeaders
+        : table === "expenditure"
+          ? expenseHeaders
+          : table === "contract_transaction"
+            ? ctransactionHeaders
+            : undefined;
+
   const primaryKey =
-  table === "salary"
-    ? salaryHeaders[0]
-    : table === "budget"
-      ? budgetHeaders[0]
-      : table === "expenditure"
-        ? expenseHeaders[0]
-        : table === "contract_transaction"
-          ? ctransactionHeaders[0]
-          : undefined;
-  
+    table === "salary"
+      ? salaryHeaders[0]
+      : table === "budget"
+        ? budgetHeaders[0]
+        : table === "expenditure"
+          ? expenseHeaders[0]
+          : table === "contract_transaction"
+            ? ctransactionHeaders[0]
+            : undefined;
+
   const pageTitle =
-  table === "salary"
-    ? "Salary"
-    : table === "budget"
-      ? "Budget"
-      : table === "expenditure"
-        ? "Expenditure"
-        : table === "contract_transaction"
-          ? "Contract Transactions"
-          : undefined;
+    table === "salary"
+      ? "Salary"
+      : table === "budget"
+        ? "Budget"
+        : table === "expenditure"
+          ? "Expenditure"
+          : table === "contract_transaction"
+            ? "Contract Transactions"
+            : undefined;
 
   const handleEdit = async (id: number) => {
     await fetch("/finance/api/database/edit", {
       method: "POST",
       body: JSON.stringify({
         id,
-        table
+        table,
       }),
     });
   };
@@ -60,11 +64,10 @@
       method: "POST",
       body: JSON.stringify({
         id,
-        table
+        table,
       }),
     });
   };
-
 </script>
 
 <main class="w-full">
@@ -94,12 +97,5 @@
       <span>Add an Entry</span>
     </div>
   </a>
-  <Table
-    {primaryKey}
-    {headers}
-    {rows}
-    {handleEdit}
-    {handleDelete}
-  />
+  <Table {primaryKey} {headers} {rows} {handleEdit} {handleDelete} />
 </main>
-

@@ -150,6 +150,10 @@
     color: var(--primary-color);
   }
 
+  header nav a:hover {
+    text-decoration: underline;
+  }
+
   header .mobile {
     display: none;
   }

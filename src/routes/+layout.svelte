@@ -32,10 +32,11 @@
     text-decoration: none;
     color: var(--tertiary-color);
   }
-
-  :global(a:hover) {
-    text-decoration: underline;
-  }
+  
+  :global(a:link) { text-decoration: none; }
+  :global(a:visited) { text-decoration: none; }
+  :global(a:hover) { text-decoration: none; }
+  :global(a:active) { text-decoration: none; }
 
   :global(button) {
     border: none;
@@ -73,5 +74,12 @@
   :global(h5),
   :global(h6) {
     font-family: var(--font-family-headings);
+  }
+
+  :global(.material-symbols-outlined) {
+      color: var(--primary-color);
+      font-family: 'Material Symbols Outlined';
+      font-size: 18px; /* Adjust the font size as needed */
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
 </style>

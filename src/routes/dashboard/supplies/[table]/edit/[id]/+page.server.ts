@@ -13,17 +13,19 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   if (!table) {
     return error(404, "Invalid table");
   }
-  const data = await db.execute(`SELECT * FROM ${tableName} WHERE ${table.primaryKey}=${id}`);
+  const data = await db.execute(
+    `SELECT * FROM ${tableName} WHERE ${table.primaryKey}=${id}`,
+  );
 
   return {
     table: tableName,
     // @ts-ignore
-    data: data[0][0]
+    data: data[0][0],
   };
 };
 
 export const actions: Actions = {
-  edit: async ({cookies, request, params }) => {
+  edit: async ({ cookies, request, params }) => {
     const form = await request.formData();
     const tableName = params.table;
     const id = params.id;
@@ -40,17 +42,16 @@ export const actions: Actions = {
       if (!value) {
         return error(401, `missing key ${header}`);
       }
-      values[header] = value; 
+      values[header] = value;
     }
 
-    let zipped = headers.map(
-      (header) => `${header} = '${values[header]}'`
-    ).join(", ");
+    let zipped = headers
+      .map((header) => `${header} = '${values[header]}'`)
+      .join(", ");
 
-
-    await db.execute(`UPDATE ${tableName} SET ${zipped} WHERE ${primaryKey}=${id}`);
+    await db.execute(
+      `UPDATE ${tableName} SET ${zipped} WHERE ${primaryKey}=${id}`,
+    );
     return { success: true };
-  }
-
-} 
-
+  },
+};

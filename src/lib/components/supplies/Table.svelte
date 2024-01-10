@@ -1,11 +1,13 @@
 <script lang="ts">
+  import { enhance, applyAction } from "$app/forms";
+  import { goto } from "$app/navigation";
   import Tables from "$lib/tables";
 
   export let rows: Array<Record<string, any>> = [];
   export let table: string;
-  
+
   // @ts-ignore
-  const { primaryKey, headers, department } = Tables[table];
+  $: ({headers, primaryKey, department} = Tables[table]);
 </script>
 
 <div class="flex mt-4 mb-4 flex-col">
@@ -43,13 +45,20 @@
                 <td
                   class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium"
                 >
-                  <form method="POST">
-                    <input type="hidden" name="table" bind:value={table}/>
-                    <input type="hidden" name="id" bind:value={row[primaryKey]}/>
+                  <form method="POST" 
+                    use:enhance >
+                    <input type="hidden" name="table" id={row[primaryKey]} bind:value={table} />
+                    <input
+                      type="hidden"
+                      name="id"
+                      id={row[primaryKey]}
+                      bind:value={row[primaryKey]}
+                    />
                     <a
                       href={`/dashboard/${department}/${table}/edit/${row[primaryKey]}`}
                       class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                      >Edit</a>
+                      >Edit</a
+                    >
                     <button
                       type="submit"
                       formaction="?/delete"

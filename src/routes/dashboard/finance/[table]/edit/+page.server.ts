@@ -1,6 +1,11 @@
 import type { PageServerLoad } from "./$types";
 import { redirect } from "@sveltejs/kit";
-import { salaryHeaders, budgetHeaders, expenseHeaders, ctransactionHeaders } from "$lib/headers"
+import {
+  salaryHeaders,
+  budgetHeaders,
+  expenseHeaders,
+  ctransactionHeaders,
+} from "$lib/headers";
 
 export const load: PageServerLoad = async ({ cookies, params }) => {
   const id = cookies.get("auth-token") || null;
@@ -28,6 +33,6 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
   return {
     table: table,
-    headers
+    headers,
   };
 };

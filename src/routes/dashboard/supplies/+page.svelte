@@ -7,10 +7,9 @@
 
   export let data: NonNullable<PageServerData>;
 
-  const items = data["items"] as Array<Record<string, any>>;
-  const suppliers = data["suppliers"] as Array<Record<string, any>>;
-  const transactions = data["transactions"] as Array<Record<string, any>>;
-
+  $: items = data["items"] as Array<Record<string, any>>;
+  $: suppliers = data["suppliers"] as Array<Record<string, any>>;
+  $: transactions = data["transactions"] as Array<Record<string, any>>;
 </script>
 
 <main class="w-full">
@@ -28,18 +27,9 @@
     >
   </div>
 
-  <Table
-    table="Item"
-    rows={items}
-  />
-  <Table
-    table="Supplier"
-    rows={suppliers}
-  />
-  <Table
-    table="Item_Transaction"
-    rows={transactions}
-  />
+  <Table table="Item" rows={items} />
+  <Table table="Supplier" rows={suppliers} />
+  <Table table="Item_Transaction" rows={transactions} />
 
   <a
     href="/dashboard/supplies/Item"

@@ -20,8 +20,12 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 };
 
 export const actions: Actions = {
+<<<<<<< HEAD
 
   add: async ({cookies, request}) => {
+=======
+  add: async ({ cookies, request }) => {
+>>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
     const form = await request.formData();
     const tableName = form.get("table");
     const table = Tables[form.get("table") as string];
@@ -39,9 +43,18 @@ export const actions: Actions = {
       values.push(`'${value}'`);
     }
 
+<<<<<<< HEAD
     await db.execute(`INSERT INTO ${tableName} (${headers.join(", ")}) VALUES (${values})`);
     return { success: true };
   }
 
 } 
 
+=======
+    await db.execute(
+      `INSERT INTO ${tableName} (${headers.join(", ")}) VALUES (${values})`,
+    );
+    return { success: true };
+  },
+};
+>>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f

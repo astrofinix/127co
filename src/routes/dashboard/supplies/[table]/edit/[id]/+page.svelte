@@ -7,21 +7,24 @@
   import { onMount } from "svelte";
 
   export let data: NonNullable<PageServerData>;
-  const table = data["table"];
+  $: table = data["table"];
   // @ts-ignore
-  const rows =  data["data"];
+  $: rows = data["data"];
 
   // @ts-ignore
+<<<<<<< HEAD
   const { headers, name } = Tables[table];
+=======
+  $: ({ headers, name } = Tables[table]);
+>>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
 
   let formData: Record<string, any> = {};
 
   onMount(() => {
     for (const header of headers) {
-      formData[header] = rows[header]; 
+      formData[header] = rows[header];
     }
   });
-
 </script>
 
 <main class="w-full">
@@ -58,7 +61,7 @@
 
   <form method="POST">
     {#each headers as header (header)}
-      <input type="hidden" name={header} bind:value={formData[header]}/>
+      <input type="hidden" name={header} bind:value={formData[header]} />
     {/each}
     <button
       formaction="?/edit"
@@ -66,5 +69,10 @@
     >
       Edit an Entry
     </button>
+<<<<<<< HEAD
   <form>
+=======
+    <form></form>
+  </form>
+>>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
 </main>

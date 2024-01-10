@@ -1,7 +1,7 @@
 import db from "$lib/server/database";
 import type { RowDataPacket } from "mysql2";
 
-import type { PageServerLoad } from "./$types";
+import type { PageServerLoad, Actions } from "./$types";
 import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ cookies, params }) => {
@@ -22,14 +22,23 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 
   const [[timelines, teams]] = await db.query<RowDataPacket[][]>(
     `SELECT * FROM Timeline WHERE Timeline_ID = ${project["Project_Timeline_ID"]};` +
-      `SELECT * FROM Team WHERE Team_ID = ${project["Project_Team_ID"]};`,
+      `SELECT * FROM Team WHERE Team_ID = ${project["Project_Team_ID"]};`
   );
 
-  console.log(projects);
+  const [all_teams] = await db.execute<RowDataPacket[]>(
+    `SELECT * FROM Team WHERE Team_ID;`
+  );
 
   return {
     project,
     timeline: timelines[0],
     team: teams[0],
+    teams: all_teams,
   };
 };
+
+export const actions = {
+  default: async ({request}) => {
+    
+  }
+} satisfies Actions;

@@ -6,18 +6,29 @@
 
   export let data: NonNullable<PageServerData>;
 
+<<<<<<< HEAD
   const rows = data["data"] as Array<Record<string, any>>;
   const table = data["table"] as string;
   const department = "supplies";
   const {name} = Tables[table]
+=======
+  $: rows = data["data"] as Array<Record<string, any>>;
+  $: table = data["table"] as string;
+>>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
 
+  // @ts-ignore
+  $: ({ name } = Tables[table]);
 </script>
 
 <main class="w-full">
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },
+<<<<<<< HEAD
       { href: `/dashboard/supplies/${table}`, text: name }
+=======
+      { href: `/dashboard/supplies/${table}`, text: name },
+>>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
     ]}
   />
   <a
@@ -29,8 +40,5 @@
       <span>Add an Entry</span>
     </div>
   </a>
-  <Table
-    {table}
-    {rows}
-  />
+  <Table {table} {rows} />
 </main>

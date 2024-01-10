@@ -40,6 +40,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
         `Select * from Employee where Employee_Reportsto = ${team["Team_Leader_ID"]};`,
     );
     team["Team_Leader"] = team_leader[0];
+    team["Team_Leader_Name"] = team_leader[0]["Employee_FirstName"] + (team_leader[0]["Employee_MiddleName"] ? " " + team_leader[0]["Employee_MiddleName"] + " " : " ") + team_leader[0]["Employee_LastName"]
     team["Team_Members"] = team_members;
   }
 

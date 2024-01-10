@@ -1,6 +1,11 @@
 import type { RequestHandler } from "./$types";
 import { json, error } from "@sveltejs/kit";
-import { salaryHeaders, budgetHeaders, expenseHeaders, ctransactionHeaders } from "$lib/headers";
+import {
+  salaryHeaders,
+  budgetHeaders,
+  expenseHeaders,
+  ctransactionHeaders,
+} from "$lib/headers";
 
 import db from "$lib/server/database";
 
@@ -47,7 +52,9 @@ export const POST: RequestHandler = async ({ request }) => {
     return error(401, `Missing key ${missingKey}`);
   }
   const headersSeparated = headers.join(" ,");
-  const values = headers.map((key) => formData[key] === "NULL" ?  "NULL" : `'${formData[key]}'`).join(" ,");
+  const values = headers
+    .map((key) => (formData[key] === "NULL" ? "NULL" : `'${formData[key]}'`))
+    .join(" ,");
 
   await db.execute(
     `INSERT INTO ${table} (${headersSeparated}) VALUES (${values});`,
