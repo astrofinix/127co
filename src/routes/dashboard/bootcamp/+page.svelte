@@ -2,7 +2,7 @@
     let courseList = [
       { id: 1, name: 'Course A', instructor: 'Instructor A' },
       { id: 2, name: 'Course B', instructor: 'Instructor B' },
-      // Add more courses as needed...
+      // Add more courses as needed..
     ];
   
     // Function to handle clicking on a course box//
