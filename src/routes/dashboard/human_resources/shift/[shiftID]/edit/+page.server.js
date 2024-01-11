@@ -1,4 +1,4 @@
-import * as db from "$lib/db/mysql";
+import * as db from "$lib/util/hr/db/mysql";
 import { fail } from "@sveltejs/kit";
 import { isValidTime } from "$lib/util/utilsHR";
 

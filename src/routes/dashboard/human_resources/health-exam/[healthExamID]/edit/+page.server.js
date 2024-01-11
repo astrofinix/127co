@@ -1,4 +1,4 @@
-import * as db from "$lib/db/mysql";
+import * as db from "$lib/util/hr/db/mysql";
 import { isNumber, hasNoNumbers, isValidDateTime } from "$lib/util/utilsHR";
 import { bloodTypeOptions } from '$lib/util/hr/selectOptions.js';
 import { fail } from "@sveltejs/kit";

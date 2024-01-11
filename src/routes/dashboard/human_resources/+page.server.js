@@ -1,4 +1,4 @@
-import { mysqlconnFn } from "$lib/db/mysql";
+import { mysqlconnFn } from "$lib/util/hr/db/mysql";
 
 export async function load() {
 }

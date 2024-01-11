@@ -1,4 +1,4 @@
-import * as db from "$lib/db/mysql";
+import * as db from "$lib/util/hr/db/mysql";
 import { fail } from "@sveltejs/kit";
 import { hasNoNumbers, isValidPhoneNumber, isValidDate, isValidYear } from "$lib/util/utilsHR";
 import { sexOptions, civilStatusOptions, highestLevelOfEducationOptions } from '$lib/util/hr/selectOptions.js';
