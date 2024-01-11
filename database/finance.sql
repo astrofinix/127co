@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS Budget (
     Budget_Amount DECIMAL(10, 2),
     Item_Id INT,
     Project_Id INT,
-    FOREIGN KEY (Item_Id) REFERENCES Item(Item_Id) ON UPDATE CASCADE ON DELETE SET NULL,
-    FOREIGN KEY (Project_Id) REFERENCES Project(Project_Id) ON UPDATE CASCADE ON DELETE SET NULL
+    FOREIGN KEY (Item_Id) REFERENCES Item(Item_Id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (Project_Id) REFERENCES Project(Project_Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Contract_Transaction (
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Contract_Transaction (
     CT_Total_Paid DECIMAL(10, 2) DEFAULT 0.00,      
     CT_Payment_Type VARCHAR(255),       
     Project_Id INT,
-    FOREIGN KEY (Project_Id) REFERENCES Project(Project_Id) ON UPDATE CASCADE ON DELETE SET NULL
+    FOREIGN KEY (Project_Id) REFERENCES Project(Project_Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Expenditure (
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Expenditure (
     Expense_Project_Status varchar(255),
     Salary_Id INT,
     FOREIGN KEY (CT_Id) REFERENCES Contract_Transaction(CT_Id) ON UPDATE CASCADE,
-    FOREIGN KEY (Salary_Id) REFERENCES Salary(Salary_Id) ON UPDATE CASCADE
+    FOREIGN KEY (Salary_Id) REFERENCES Salary(Salary_Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Profit (
