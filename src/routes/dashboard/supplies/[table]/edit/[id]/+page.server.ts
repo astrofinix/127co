@@ -40,7 +40,7 @@ export const actions: Actions = {
     for (const header of headers) {
       const value = form.get(header);
       if (!value) {
-        return { success: false, message: `Missing field ${header}`};
+        return { success: false, message: `Missing field ${header}` };
       }
       values[header] = value;
     }
@@ -54,7 +54,7 @@ export const actions: Actions = {
         `UPDATE ${tableName} SET ${zipped} WHERE ${primaryKey}='${id}'`,
       );
     } catch (e: any) {
-      return { success: false, message: e.message};
+      return { success: false, message: e.message };
     }
     return { success: true, message: "Successfully edited the entry" };
   },

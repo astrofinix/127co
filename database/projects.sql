@@ -64,16 +64,16 @@ INSERT INTO Timeline (Timeline_StartDate, Timeline_ExpectedFinishDate, Timeline_
 ('2018-10-01', '2018-10-31', '2018-10-31');
 
 INSERT INTO Team (Team_Name, Team_Leader_ID) VALUES
-('Alpha', 20170004),
-('Beta', 20230007),
-('Gamma', 20230012),
-('Delta', 20220001),
-('Epsilon', 20230007),
-('Zeta', 20170004),
-('Eta', 20230007),
-('Theta', 20230012),
-('Iota', 20220001),
-('Kappa', 20230007);
+('Alpha', 20160089),
+('Beta', 20160091),
+('Gamma', 20160092),
+('Delta', 20160093),
+('Epsilon', 20160094),
+('Zeta', 20160095),
+('Eta', 20170000),
+('Theta', 20170001),
+('Iota', 20170002),
+('Kappa', 20170003);
 
 INSERT INTO Project (Project_Name, Project_Description, Project_Type, Project_Budget, Project_Status, Project_Timeline_ID, Project_Team_ID) VALUES
 ('Uno', 'Grading Management Application', 'Web Application', 500000, 'Done', 1, 1),

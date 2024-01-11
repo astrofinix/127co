@@ -41,9 +41,10 @@ export const actions: Actions = {
 
     try {
       await db.execute(
-        `INSERT INTO ${tableName} (${headers.join(", ")}) VALUES (${values})`);
+        `INSERT INTO ${tableName} (${headers.join(", ")}) VALUES (${values})`,
+      );
     } catch (e: any) {
-      return { success: false, message: e.message}
+      return { success: false, message: e.message };
     }
     return { success: true };
   },

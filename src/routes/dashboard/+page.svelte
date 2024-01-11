@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Breadcrumb from "$lib/components/Breadcrumb.svelte";
+  import DescriptiveLink from "$lib/components/DescriptiveLink.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
@@ -17,106 +17,42 @@
         >
           {link.label}
         </a>
-        <div class="flex flex-col overflow-y-auto h-full">
-          <!-- Employees -->
-          <a
-            href="/dashboard/human_resources/employee"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5">
-              groups
-            </span>
-            <div class="flex w-full flex-col h-full">
-              <span>Employees</span>
-              <span class="text-subtext z-4"
-                >Show the list of current employees.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-          <!-- Jobs -->
-          <a
-            href="/dashboard/human_resources/job"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5"> work </span>
-            <div class="flex w-full flex-col h-full">
-              <span>Jobs</span>
-              <span class="text-subtext z-4"
-                >Explore and manage job-related information.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-          <!-- Shifts -->
-          <a
-            href="/dashboard/human_resources/shift"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5">
-              schedule
-            </span>
-            <div class="flex w-full flex-col h-full">
-              <span>Shifts</span>
-              <span class="text-subtext z-4"
-                >View and manage employee work schedules.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-          <!-- Timesheets -->
-          <a
-            href="/dashboard/human_resources/timesheet"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5">
-              punch_clock
-            </span>
-            <div class="flex w-full flex-col h-full">
-              <span>Timesheets</span>
-              <span class="text-subtext z-4"
-                >Track and manage employee working hours and attendance.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-          <!-- Health Exams -->
-          <a
-            href="/dashboard/human_resources/health-exam"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5">
-              medical_information
-            </span>
-            <div class="flex w-full flex-col h-full">
-              <span>Health Exams</span>
-              <span class="text-subtext z-4"
-                >Track and manage employee health examination records.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-        </div>
+        <DescriptiveLink
+          links={[
+            {
+              href: "/dashboard/human_resources/employee",
+              label: "Employees",
+              icon: "groups",
+              description: "Show the list of current employees.",
+            },
+            {
+              href: "/dashboard/human_resources/job",
+              label: "Jobs",
+              icon: "work",
+              description: "Explore and manage job-related information.",
+            },
+            {
+              href: "/dashboard/human_resources/shift",
+              label: "Shifts",
+              icon: "schedule",
+              description: "View and manage employee work schedules.",
+            },
+            {
+              href: "/dashboard/human_resources/timesheet",
+              label: "Timesheets",
+              icon: "punch_clock",
+              description:
+                "Track and manage employee working hours and attendance.",
+            },
+            {
+              href: "/dashboard/human_resources/health-exam",
+              label: "Health Exams",
+              icon: "medical_information",
+              description:
+                "Track and manage employee health examination records.",
+            },
+          ]}
+        />
       </div>
     {:else if link.href === "/dashboard/teams"}
       <div class="w-full">
@@ -126,64 +62,28 @@
         >
           Project Management
         </a>
-        <div class="flex flex-col overflow-y-auto h-full">
-          <!-- Teams -->
-          <a
-            href="/dashboard/teams"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5">
-              groups
-            </span>
-            <div class="flex w-full flex-col h-full">
-              <span>Teams</span>
-              <span class="text-subtext z-4"
-                >Show the list of current teams.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-          <!-- Projects -->
-          <a
-            href="/dashboard/projects"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5"> work </span>
-            <div class="flex w-full flex-col h-full">
-              <span>Projects</span>
-              <span class="text-subtext z-4"
-                >Explore and manage project-related information.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-          <!-- Software -->
-          <a
-            href="/dashboard/software"
-            class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
-          >
-            <span class="text-3xl material-symbols-outlined mr-5"> code </span>
-            <div class="flex w-full flex-col h-full">
-              <span> Software </span>
-              <span class="text-subtext z-4"
-                >View and manage software-related information.</span
-              >
-            </div>
-            <span
-              class="relative z-4 right-100 bottom-0 material-symbols-outlined"
-            >
-              navigate_next
-            </span>
-          </a>
-        </div>
+        <DescriptiveLink
+          links={[
+            {
+              href: "/dashboard/teams",
+              label: "Teams",
+              icon: "groups",
+              description: "Show the list of current teams.",
+            },
+            {
+              href: "/dashboard/projects",
+              label: "Projects",
+              icon: "work",
+              description: "Explore and manage project-related information.",
+            },
+            {
+              href: "/dashboard/software",
+              label: "Software",
+              icon: "code",
+              description: "View and manage software-related information.",
+            },
+          ]}
+        />
       </div>
     {/if}
   {/each}

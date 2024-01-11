@@ -26,10 +26,14 @@ export const actions: Actions = {
       return error(404, { message: "invalid table" });
     }
 
-    await db.execute(
-      `DELETE FROM ${tableName} WHERE ${table.primaryKey}=${id}`,
-    );
+    try {
+      await db.execute(
+        `DELETE FROM ${tableName} WHERE ${table.primaryKey}=${id}`,
+      );
+    } catch (e: any) {
+      return { success: false, message: e.message };
+    }
 
-    return { success: true };
+    return { success: true, message: "Successfully deleted entry. " };
   },
 };
