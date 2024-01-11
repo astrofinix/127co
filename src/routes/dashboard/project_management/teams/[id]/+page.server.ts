@@ -53,7 +53,28 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
 };
 
 export const actions = {
-  add_member: async ({ request, params }) => {},
+  add_member: async ({ request, params }) => {
+    const data = await request.formData();
+
+    const [team] = await db.execute<RowDataPacket[]>(
+      `SELECT * FROM Team WHERE Team_ID = ${params.id}`,
+    );
+
+    const [member_added] = await db.execute<ResultSetHeader[]>(
+      `UPDATE Employee SET Employee_ReportsTo = ${team[0].Team_Leader_ID} WHERE Employee_ID = ${data.get(
+        "member",
+      )}`,
+    );
+  },
+  remove_member: async ({ request, params }) => {
+    const data = await request.formData();
+
+    const [member_removed] = await db.execute<ResultSetHeader[]>(
+      `UPDATE Employee SET Employee_ReportsTo = NULL WHERE Employee_ID = ${data.get(
+        "member",
+      )}`,
+    );
+  },
   add_project: async ({ request, params }) => {
     const data = await request.formData();
 
@@ -61,6 +82,15 @@ export const actions = {
       `UPDATE Project SET Project_Team_ID = ${
         params.id
       } WHERE Project_ID = ${data.get("project")}`,
+    );
+  },
+  remove_project: async ({ request, params }) => {
+    const data = await request.formData();
+
+    const [software_removed] = await db.execute<ResultSetHeader[]>(
+      `UPDATE Project SET Project_Team_ID = NULL WHERE Project_ID = ${data.get(
+        "project",
+      )}`,
     );
   },
   add_software: async ({ request, params }) => {

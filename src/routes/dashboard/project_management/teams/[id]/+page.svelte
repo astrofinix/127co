@@ -6,8 +6,9 @@
 
   export let data: PageServerData;
 
-  let show = false; // project
-  let show2 = false; // software
+  let show = false; // member
+  let show2 = false; // project
+  let show3 = false; // software
 
   function showAdd() {
     show = !show;
@@ -21,6 +22,13 @@
   }
   function cancelAdd2() {
     show2 = !show2;
+  }
+
+  function showAdd3() {
+    show3 = !show3;
+  }
+  function cancelAdd3() {
+    show3 = !show3;
   }
 </script>
 
@@ -68,63 +76,63 @@
       <div
         class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       >
-        <h2 class="members">Members:</h2>
+        <h2>Members:</h2>
         <hr />
-        <ul class="mem">
+        <ul>
           {#each data.team.Team_Members as member}
-            <div class="each">
-              <li>
-                {member.Employee_FirstName}
-                {member.Employee_MiddleName ? member.Employee_MiddleName : ""}
-                {member.Employee_LastName}
-              </li>
-            </div>
-          {/each}
-        </ul>
-      </div>
-    </div>
-    <div class="all justify-center">
-      <div
-        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-      >
-        <h2>Projects:</h2>
-        <hr />
-        <ul class="projectname">
-          {#each data.team.Team_Projects as project}
-            <li>
+            <li class="flex justify-between">
               <a
-                href="/dashboard/project_management/projects/{project.Project_ID}"
-                >{project.Project_Name}</a
-              >
+                href="/dashboard/human_resources/employee/{member.Employee_ID}"
+              >{member.Employee_FirstName}
+                {member.Employee_MiddleName ? member.Employee_MiddleName : ""}
+                {member.Employee_LastName}</a>
+              <form action="?/remove_member" method="POST">
+                <input
+                  type="hidden"
+                  name="member"
+                  value={member.Employee_ID}
+                />
+                <button
+                  class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+                >
+                  <span class="material-symbols-outlined">remove</span>
+                </button>
+              </form>
             </li>
           {/each}
         </ul>
         <div class="flex justify-center">
           {#if show}
-            <form class="flex" action="?/add_project" method="POST">
+            <form class="flex gap-2" action="?/add_member" method="POST">
               <select
                 class="text-sm border-2 rounded-full border-gray-400 text-gray-700 pl-2"
-                id="project"
-                name="project"
+                id="member"
+                name="member"
                 value=""
                 required
               >
-                <option value="" disabled selected hidden>Select Project</option
+                <option value="" disabled selected hidden
+                  >Select Member</option
                 >
-                {#each data.team.Other_Projects as oproject}
-                  <option value={oproject.Project_ID}
-                    >{oproject.Project_Name}</option
-                  ><span class="material-symbols-outlined">remove</span>
+                {#each data.team.Other_Members as omember}
+                  <option
+                    value={omember.Employee_ID}
+                    >{omember.Employee_FirstName}
+                    {omember.Employee_MiddleName
+                      ? omember.Employee_MiddleName
+                      : ""}
+                    {omember.Employee_LastName}</option
+                  >
                 {/each}
               </select>
               <button
-                class={"flex text-sm my-0.5 mx-1 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+                class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
               >
                 <span class="material-symbols-outlined">add</span>
               </button>
               <button
                 on:click={cancelAdd}
-                class={"flex text-sm my-0.5 mx-1 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+                class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
               >
                 <span class="material-symbols-outlined">cancel</span>
               </button>
@@ -132,7 +140,78 @@
           {:else}
             <button
               on:click={showAdd}
-              class={"flex text-sm my-0.5 mx-1 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus m-2"}
+              class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus m-2"}
+            >
+              <span class="material-symbols-outlined">add</span>
+              <span class="text-base">Add Member</span>
+            </button>
+          {/if}
+        </div>
+      </div>
+    </div>
+    <div class="all">
+      <div
+        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <h2>Projects:</h2>
+        <hr />
+        <ul>
+          {#each data.team.Team_Projects as project}
+            <li class="flex justify-between">
+              <a
+                href="/dashboard/project_management/projects/{project.Project_ID}"
+              >{project.Project_Name}</a>
+              <form action="?/remove_project" method="POST">
+                <input
+                  type="hidden"
+                  name="project"
+                  value={project.Project_ID}
+                />
+                <button
+                  class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+                >
+                  <span class="material-symbols-outlined">remove</span>
+                </button>
+              </form>
+            </li>
+          {/each}
+        </ul>
+        <div class="flex justify-center">
+          {#if show2}
+            <form class="flex gap-2" action="?/add_project" method="POST">
+              <select
+                class="text-sm border-2 rounded-full border-gray-400 text-gray-700 pl-2"
+                id="project"
+                name="project"
+                value=""
+                required
+              >
+                <option value="" disabled selected hidden
+                  >Select Project</option
+                >
+                {#each data.team.Other_Projects as oproj}
+                  <option
+                    value={oproj.Project_ID}
+                    >{oproj.Project_Name}</option
+                  >
+                {/each}
+              </select>
+              <button
+                class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+              >
+                <span class="material-symbols-outlined">add</span>
+              </button>
+              <button
+                on:click={cancelAdd2}
+                class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+              >
+                <span class="material-symbols-outlined">cancel</span>
+              </button>
+            </form>
+          {:else}
+            <button
+              on:click={showAdd2}
+              class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus m-2"}
             >
               <span class="material-symbols-outlined">add</span>
               <span class="text-base">Add Project</span>
@@ -163,7 +242,7 @@
                     software.Software_Version}
                 />
                 <button
-                  class={"flex text-sm my-0.5 mx-1 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+                  class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
                 >
                   <span class="material-symbols-outlined">remove</span>
                 </button>
@@ -172,8 +251,8 @@
           {/each}
         </ul>
         <div class="flex justify-center">
-          {#if show2}
-            <form class="flex" action="?/add_software" method="POST">
+          {#if show3}
+            <form class="flex gap-2" action="?/add_software" method="POST">
               <select
                 class="text-sm border-2 rounded-full border-gray-400 text-gray-700 pl-2"
                 id="software"
@@ -192,21 +271,21 @@
                 {/each}
               </select>
               <button
-                class={"flex text-sm my-0.5 mx-1 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+                class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
               >
                 <span class="material-symbols-outlined">add</span>
               </button>
               <button
-                on:click={cancelAdd2}
-                class={"flex text-sm my-0.5 mx-1 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
+                on:click={cancelAdd3}
+                class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
               >
                 <span class="material-symbols-outlined">cancel</span>
               </button>
             </form>
           {:else}
             <button
-              on:click={showAdd2}
-              class={"flex text-sm my-0.5 mx-1 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus m-2"}
+              on:click={showAdd3}
+              class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus m-2"}
             >
               <span class="material-symbols-outlined">add</span>
               <span class="text-base">Add Software</span>
@@ -297,5 +376,16 @@
 
   .projectname {
     text-align: center;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  button:hover, button:focus {
+    background-color: transparent;
   }
 </style>
