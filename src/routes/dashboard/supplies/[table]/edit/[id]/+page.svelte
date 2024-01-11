@@ -15,13 +15,9 @@
 
   export let data: NonNullable<PageServerData>;
   $: table = data["table"];
-  // @ts-ignore
   $: rows = data["data"];
-
+  
   // @ts-ignore
-<<<<<<< HEAD
-  const { headers, name } = Tables[table];
-=======
   $: ({ headers, name } = Tables[table]);
   let formData: Record<string, any> = {};
 
@@ -101,10 +97,7 @@
     >
       Edit an Entry
     </button>
-<<<<<<< HEAD
   <form>
-=======
     <form></form>
   </form>
->>>>>>> 731add57a0a434c19f16bb96f374c43df791d33f
 </main>
