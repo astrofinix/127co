@@ -3,10 +3,10 @@
 </script>
 
 <main class="w-full">
-  <Breadcrumb items={[{ href: "/dashboard/finance", text: "Finance" }]} />
+  <Breadcrumb items={[{ href: "/dashboard/finance", text: "Finance" }]}/>
 
   <a
-    href="/dashboard/finance/salary"
+    href="/dashboard/finance/Salary"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> man </span>
@@ -20,13 +20,13 @@
   </a>
 
   <a
-    href="/dashboard/finance/budget"
+    href="/dashboard/finance/Budget"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> wallet </span>
     <div class="flex w-full flex-col h-full">
       <span>Budget</span>
-      <span class="text-subtext z-4">View the summary of budgets</span>
+      <span class="text-subtext z-4">View the summary of budgets alloted</span>
     </div>
     <span class="relative z-4 right-100 bottom-0 material-symbols-outlined">
       navigate_next
@@ -34,7 +34,7 @@
   </a>
 
   <a
-    href="/dashboard/finance/expenditure"
+    href="/dashboard/finance/Expenditure"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> book </span>
@@ -48,7 +48,7 @@
   </a>
 
   <a
-    href="/dashboard/finance/contract_transaction"
+    href="/dashboard/finance/Contract_Transaction"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> receipt </span>
@@ -64,7 +64,7 @@
   </a>
 
   <a
-    href="/dashboard/finance/profit"
+    href="/dashboard/finance/Profit"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
     <span class="text-3xl material-symbols-outlined mr-5"> money </span>

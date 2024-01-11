@@ -58,22 +58,4 @@ export const actions: Actions = {
     }
     return { success: true, message: "Successfully edited the entry" };
   },
-
-  search: async ({cookies, request}) => {
-    const data = await request.formData();
-    const query = data.get("query");
-    const table = data.get("table");
-    const sql = `SELECT * FROM ${table} WHERE (${query})`;
-
-    let results;
-    try {
-      results = await db.execute(sql);
-    } catch (e) {
-      return { success: true, rows: [] }
-    }
-
-    console.log(sql);
-    console.log(results[0]);
-    return { success: true, rows: results[0] }
-  }
 };

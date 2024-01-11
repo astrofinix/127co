@@ -14,6 +14,8 @@
   import type { PageServerData } from "./$types";
   import Tables from "$lib/tables";
 
+
+
   export let data: NonNullable<PageServerData>;
 
   $: rows = data["data"] as Array<Record<string, any>>;
@@ -61,6 +63,7 @@
     <div class="flex flex-col h-full">
       <span>Add an Entry</span>
     </div>
+
   </a>
 
   <form class="flex mb-5" method="POST" on:submit|preventDefault={handleSubmit} action="?/search">
@@ -74,5 +77,4 @@
   </form>
 
   <Table {table} {rows} />
-
 </main>

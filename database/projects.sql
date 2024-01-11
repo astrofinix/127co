@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS Timeline (
 CREATE TABLE IF NOT EXISTS Team (
     Team_ID INT NOT NULL UNIQUE AUTO_INCREMENT,
     Team_Name VARCHAR(50) NOT NULL,
-    Team_Leader_ID INT NOT NULL,
+    Team_Leader_ID INT,
     PRIMARY KEY (Team_ID),
-    FOREIGN KEY (Team_Leader_ID) REFERENCES Employee(Employee_ID)
+    FOREIGN KEY (Team_Leader_ID) REFERENCES Employee(Employee_ID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Project (
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Team_Software (
     Software_Version VARCHAR(50) NOT NULL,
     PRIMARY KEY (Team_ID, Software_Name, Software_Version),
     FOREIGN KEY (Team_ID) REFERENCES Team(Team_ID) ON DELETE CASCADE,
-    FOREIGN KEY (Software_Name, Software_Version) REFERENCES Software(Software_Name, Software_Version) ON DELETE CASCADE
+    FOREIGN KEY (Software_Name, Software_Version) REFERENCES Software(Software_Name, Software_Version) ON DELETE CASCADE ON UPDATE CASCADE 
 );
 
 INSERT INTO Timeline (Timeline_StartDate, Timeline_ExpectedFinishDate, Timeline_FinishDate) VALUES

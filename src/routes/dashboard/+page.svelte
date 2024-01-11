@@ -1,8 +1,8 @@
 <script lang="ts">
   import DescriptiveLink from "$lib/components/DescriptiveLink.svelte";
-  import type { PageData } from "./$types";
+  import type { PageServerData } from "./$types";
 
-  export let data: PageData;
+  export let data: PageServerData;
 
   let links = data.links.filter((link) => link.href !== "/dashboard");
 </script>
@@ -54,7 +54,7 @@
           ]}
         />
       </div>
-    {:else if link.href === "/dashboard/teams"}
+    {:else if link.href === "/dashboard/project_management"}
       <div class="w-full">
         <a
           href="/dashboard/human_resources"
@@ -65,19 +65,19 @@
         <DescriptiveLink
           links={[
             {
-              href: "/dashboard/teams",
+              href: "/dashboard/project_management/teams",
               label: "Teams",
               icon: "groups",
               description: "Show the list of current teams.",
             },
             {
-              href: "/dashboard/projects",
+              href: "/dashboard/project_management/projects",
               label: "Projects",
               icon: "work",
               description: "Explore and manage project-related information.",
             },
             {
-              href: "/dashboard/software",
+              href: "/dashboard/project_management/software",
               label: "Software",
               icon: "code",
               description: "View and manage software-related information.",

@@ -2,7 +2,7 @@
 
 -- Create Client Table
 CREATE TABLE IF NOT EXISTS Client (
-    Client_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Client_ID INT AUTO_INCREMENT PRIMARY KEY,
     Client_CompanyName VARCHAR(30) NOT NULL,
     Client_RepFirstName VARCHAR(30) NOT NULL,
     Client_RepLastName VARCHAR(30) NOT NULL,
@@ -28,11 +28,11 @@ CREATE TABLE IF NOT EXISTS Contract (
     Contract_Status ENUM("Ongoing", "Finished", "Terminated") NOT NULL,
     Contract_FileLink VARCHAR(255) NOT NULL,
     Project_ID INT,
-    Signatory_ClientID INT NOT NULL,
+    Signatory_ClientID INT,
     Signatory_EmployeeID INT NOT NULL,
     Transaction_ID INT NOT NULL,
     FOREIGN KEY (Project_ID) REFERENCES Project(Project_ID) ON DELETE SET NULL,
-    FOREIGN KEY (Signatory_ClientID) REFERENCES Client(Client_ID),
+    FOREIGN KEY (Signatory_ClientID) REFERENCES Client(Client_ID) ON DELETE SET NULL,
     FOREIGN KEY (Signatory_EmployeeID) REFERENCES Employee(Employee_ID),
     FOREIGN KEY (Transaction_ID) REFERENCES Contract_Transaction(CT_ID)
 );
