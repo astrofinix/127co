@@ -1,5 +1,5 @@
 <script>
-	import { formatDateTimeForForm } from '$lib/util/utilsHR.js';
+	import { formatDateTimeForForm } from '$lib/util/hr/utilsHR.js';
 	import { bloodTypeOptions } from '$lib/util/hr/selectOptions.js';
 	import { Input, Label, Select } from 'flowbite-svelte';
 	export let isNew, exam, error;

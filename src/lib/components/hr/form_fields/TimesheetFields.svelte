@@ -1,5 +1,5 @@
 <script>
-	import { formatDateTimeForForm } from '$lib/util/utilsHR.js';
+	import { formatDateTimeForForm } from '$lib/util/hr/utilsHR.js';
 	import { Input, Label } from 'flowbite-svelte';
 	export let isNew, log, error;
 

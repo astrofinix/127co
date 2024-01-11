@@ -1,5 +1,5 @@
 import * as db from "$lib/util/hr/db/mysql";
-import { isValidDateTime } from "$lib/util/utilsHR";
+import { isValidDateTime } from "$lib/util/hr/utilsHR";
 import { fail } from "@sveltejs/kit";
 
 var id;

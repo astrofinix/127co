@@ -1,5 +1,5 @@
 <script>
-  import { formatDate } from "$lib/util/utilsHR.js";
+  import { formatDate } from "$lib/util/hr/utilsHR.js";
   import {
     Table,
     TableBody,

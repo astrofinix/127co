@@ -1,6 +1,6 @@
 import * as db from "$lib/util/hr/db/mysql";
 import { fail } from "@sveltejs/kit";
-import { hasNoNumbers, isValidPhoneNumber, isValidDate, isValidYear } from "$lib/util/utilsHR";
+import { hasNoNumbers, isValidPhoneNumber, isValidDate, isValidYear } from "$lib/util/hr/utilsHR";
 import { sexOptions, civilStatusOptions, highestLevelOfEducationOptions } from '$lib/util/hr/selectOptions.js';
 
 var id;

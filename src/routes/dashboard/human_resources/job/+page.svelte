@@ -2,7 +2,7 @@
   import JobsDisplay from "$lib/components/hr/displays/JobsDisplay.svelte";
   import { Button } from "flowbite-svelte";
   import { TableSearch } from "flowbite-svelte";
-  import { searchKeywordsJob } from "$lib/util/searchutilHR";
+  import { searchKeywordsJob } from "$lib/util/hr/searchUtilHR";
 
   export let data;
 

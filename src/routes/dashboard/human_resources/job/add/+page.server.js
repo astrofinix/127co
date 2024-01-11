@@ -1,5 +1,5 @@
 import * as db from "$lib/util/hr/db/mysql";
-import { genRD } from "$lib/util/utilsHR";
+import { genRD } from "$lib/util/hr/utilsHR";
 import { departmentOptions, statusOptions } from '$lib/util/hr/selectOptions.js';
 import { fail } from "@sveltejs/kit";
 

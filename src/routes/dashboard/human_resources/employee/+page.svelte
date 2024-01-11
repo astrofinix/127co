@@ -1,7 +1,7 @@
 <script>
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import EmployeesDisplay from "$lib/components/hr/displays/EmployeesDisplay.svelte";
-  import { searchKeywordsEmployee } from "$lib/util/searchUtilHR";
+  import { searchKeywordsEmployee } from "$lib/util/hr/searchUtilHR";
   import { Button, TableSearch } from "flowbite-svelte";
   import { Section } from "flowbite-svelte-blocks";
   export let data;

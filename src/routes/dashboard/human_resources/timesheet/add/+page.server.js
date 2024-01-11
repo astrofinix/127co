@@ -1,5 +1,5 @@
 import * as db from "$lib/util/hr/db/mysql";
-import { genRD, isValidDateTime } from "$lib/util/utilsHR";
+import { genRD, isValidDateTime } from "$lib/util/hr/utilsHR";
 import { fail } from "@sveltejs/kit";
 
 export const actions = {

@@ -1,5 +1,5 @@
 <script>
-	import { formatDateForForm } from '$lib/util/utilsHR.js';
+	import { formatDateForForm } from '$lib/util/hr/utilsHR.js';
 	import { Input, Label, Select } from 'flowbite-svelte';
 	import { sexOptions, civilStatusOptions, highestLevelOfEducationOptions } from '$lib/util/hr/selectOptions.js';
 	export let pds, error;
