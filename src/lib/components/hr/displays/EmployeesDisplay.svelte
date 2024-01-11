@@ -41,7 +41,7 @@
           <TableBodyCell>
             {#if employee.Job_Position === "Unassigned"}
               <p>{employee.Job_Position.toUpperCase()}</p>
-              <form method="post" action={"job/add?/insert"}>
+              <form method="post" action={"./job/add?/insert"}>
                 <input
                   type="hidden"
                   name="employee-id"

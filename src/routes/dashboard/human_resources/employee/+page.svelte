@@ -42,7 +42,7 @@
           Returned {filteredItems.length}
           {filteredItems.length <= 1 ? "result" : "results"}
         </p>
-        <Button href="employee/add" class="mt-2 mb-2">Add Employee</Button>
+        <Button href="./employee/add" class="mt-2 mb-2">Add Employee</Button>
       </div>
       <EmployeesDisplay data={filteredItems} {eMap} />
     </TableSearch>

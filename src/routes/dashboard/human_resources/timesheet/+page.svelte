@@ -35,7 +35,7 @@
   });
 </script>
 
-<Button href="/timesheet/add">Add Timesheet</Button>
+<Button href="./timesheet/add">Add Timesheet</Button>
 
 <br />
 <input

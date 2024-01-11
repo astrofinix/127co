@@ -47,7 +47,7 @@
   });
 </script>
 
-<Button href="/health-exam/add">Add Health Exam</Button>
+<Button href="./health-exam/add">Add Health Exam</Button>
 
 <br />
 

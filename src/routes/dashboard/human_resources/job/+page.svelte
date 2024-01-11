@@ -18,7 +18,7 @@
   });
 </script>
 
-<Button href="/job/add">Add Job</Button>
+<Button href="./job/add">Add Job</Button>
 <div class="flex">
   <TableSearch
     placeholder="Search Keywords"
