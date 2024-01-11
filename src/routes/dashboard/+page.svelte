@@ -85,6 +85,74 @@
           ]}
         />
       </div>
+        {:else if link.href === "/dashboard/marketing"}
+      <div class="w-full">
+        <a
+          href="/dashboard/marketing"
+          class="text-2xl font-bold flex items-center pb-6"
+        >
+          Marketing and Customer Acquisition
+        </a>
+        <DescriptiveLink
+          links={[
+            {
+              href: "/dashboard/marketing/Client",
+              label: "Client",
+              icon: "people",
+              description: "Centralizes client data for easy access and management.",
+            },
+            {
+              href: "/dashboard/marketing/Contract",
+              label: "Contract",
+              icon: "contract",
+              description: "Houses a complete record of contract agreements.",
+            },
+          ]}
+        />
+      </div>
+    {:else if link.href === "/dashboard/finance"}
+      <div class="w-full">
+        <a
+          href="/dashboard/finance"
+          class="text-2xl font-bold flex items-center pb-6"
+        >
+          Finance
+        </a>
+        <DescriptiveLink
+          links={[
+            {
+              href: "/dashboard/finance/Salary",
+              label: "Salary",
+              icon: "man",
+              description: "View the salaries of each employee",
+            },
+            {
+              href: "/dashboard/finance/Budget",
+              label: "Budget",
+              icon: "wallet",
+              description: "View the summary of budgets alloted",
+            },
+            {
+              href: "/dashboard/finance/Expenditure",
+              label: "Expenditure",
+              icon: "book",
+              description: "Track the expenses of the company",
+            },
+            {
+              href: "/dashboard/finance/Contract_Transaction",
+              label: "Contract Transaction",
+              icon: "receipt",
+              description: "Track the transactions made from the contracts",
+            },
+            {
+              href: "/dashboard/finance/Profit",
+              label: "Profit",
+              icon: "money",
+              description: "View the log of profits gained by the company",
+            },
+          ]}
+        />
+      </div>
     {/if}
   {/each}
 </div>

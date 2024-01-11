@@ -1,7 +1,8 @@
 <script lang="ts">
+  import type { PageServerData } from "./$types";
+
   import Table from "$lib/components/supplies/Table.svelte";
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
-  import type { PageServerData } from "./$types";
   import Tables from "$lib/tables";
 
   export let data: NonNullable<PageServerData>;

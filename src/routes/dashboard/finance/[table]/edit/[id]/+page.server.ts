@@ -40,7 +40,7 @@ export const actions: Actions = {
     for (const header of headers) {
       const value = form.get(header);
       if (!value) {
-        return { success: false, message: `Missing field ${header}`};
+        return error(401, `missing key ${header}`);
       }
       values[header] = value;
     }
@@ -50,12 +50,10 @@ export const actions: Actions = {
       .join(", ");
 
     try {
-      await db.execute(
-        `UPDATE ${tableName} SET ${zipped} WHERE ${primaryKey}='${id}'`,
-      );
-    } catch (e: any) {
-      return { success: false, message: e.message};
+      await db.execute(`UPDATE ${tableName} SET ${zipped} WHERE ${primaryKey}=${id}`,);
+    } catch (e: any){
+      return { success: false, message: e.message };
     }
-    return { success: true, message: "Successfully edited the entry" };
+    return { success: true, message: "Entry edited!" };
   },
 };

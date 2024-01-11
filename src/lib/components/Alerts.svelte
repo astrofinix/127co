@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Alert, Button } from "flowbite-svelte";
+  import { fly } from "svelte/transition";
   import { CheckCircleSolid, CloseCircleSolid } from "flowbite-svelte-icons";
 
   export let data: Array<{ message: string; type: "fail" | "success" }>;
@@ -10,12 +11,12 @@
     <div class="flex flex-col gap-2">
       {#each data as alert}
         {#if alert.type == "fail"}
-          <Alert dismissable color="red">
+          <Alert dismissable color="red" transition={fly}>
             <CloseCircleSolid slot="icon" class="w-4 h-4" />
             {alert.message}
           </Alert>
         {:else}
-          <Alert dismissable color="green">
+          <Alert dismissable color="green" transition={fly}>
             <CheckCircleSolid slot="icon" class="w-4 h-4" />
             {alert.message}
           </Alert>

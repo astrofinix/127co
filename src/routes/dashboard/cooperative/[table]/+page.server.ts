@@ -30,7 +30,7 @@ export const actions: Actions = {
 
     console.log("INVOKED");
     await db.execute(
-      `DELETE FROM ${tableName} WHERE ${table.primaryKey}=${id}`,
+      `DELETE FROM ${tableName} WHERE ${table.primaryKey}='${id}'`,
     );
 
     return { success: true };

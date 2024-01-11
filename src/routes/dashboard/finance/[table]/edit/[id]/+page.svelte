@@ -1,24 +1,32 @@
 <script lang="ts">
- import type { PageServerData } from "./$types";
-  import type { ActionResult } from "@sveltejs/kit";
-
-  import { applyAction, deserialize } from "$app/forms";
-  import { invalidateAll } from "$app/navigation";
-
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import { Label, Input, Helper } from "flowbite-svelte";
   import Tables from "$lib/tables";
+  import type { PageServerData } from "./$types";
+  import type { ActionResult } from "@sveltejs/kit";
+  import { applyAction, deserialize } from "$app/forms";
+  import { onMount } from "svelte";
+  import { invalidateAll } from "$app/navigation";
   import Alerts from "$lib/components/Alerts.svelte";
 
   export let data: NonNullable<PageServerData>;
-  
   $: table = data["table"];
-  let alerts: Array<{message: string, type: 'fail' | 'success'}> = [];
-  $: ({ name, headers } = Tables[table]);
-  let formData: Record<string, any> = {};
+  // @ts-ignore
+  $: rows = data["data"];
 
   // @ts-ignore
-	async function handleSubmit(event) {
+  $: ({ headers, name } = Tables[table]);
+  let alerts: Array<{message: string, type: "fail" | "success"}>= [];
+  let formData: Record<string, any> = {};
+
+  onMount(() => {
+    for (const header of headers) {
+      formData[header] = rows[header];
+    }
+  });
+
+  // @ts-ignore
+  async function handleSubmit(event) {
 		const data = new FormData(event.currentTarget);
 		const response = await fetch(event.currentTarget.action, {
 			method: 'POST',
@@ -38,14 +46,12 @@
 </script>
 
 <main class="w-full">
-
-  <Alerts data={alerts} />
-
+  <Alerts data={alerts}/>
   <Breadcrumb
     items={[
-      { href: "/dashboard/cooperative", text: "Cooperative" },
-      { href: `/dashboard/cooperative/${table}`, text: name },
-      { href: `/dashboard/cooperative/${table}/add`, text: "Add an Entry" },
+      { href: "/dashboard/finance", text: "Finance" },
+      { href: `/dashboard/finance/${table}`, text: name },
+      { href: `/dashboard/finance/${table}/edit`, text: "Edit an Entry" },
     ]}
   />
   {#each headers as header (header)}
@@ -72,16 +78,16 @@
     >
   {/each}
 
-  <form method="POST" action="?/add" on:submit|preventDefault={handleSubmit}>
-    <input type="hidden" name="table" value={table} />
+  <form method="POST" action = "?/edit" on:submit|preventDefault={handleSubmit}>
     {#each headers as header (header)}
       <input type="hidden" name={header} bind:value={formData[header]} />
     {/each}
     <button
-      type="submit"
+      type = "submit"
       class="mt-4 bg-accent hover:bg-primary-600 text-white px-4 py-2 rounded"
     >
-      Add an Entry
+      Edit an Entry
     </button>
+    <form></form>
   </form>
 </main>

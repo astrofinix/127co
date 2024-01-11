@@ -9,48 +9,53 @@
   import { Label, Input, Helper } from "flowbite-svelte";
   import Tables from "$lib/tables";
   import Alerts from "$lib/components/Alerts.svelte";
+  import { alerts } from "$lib/store";
 
   import { onMount } from "svelte";
 
   export let data: NonNullable<PageServerData>;
   $: table = data["table"];
-  // @ts-ignore
   $: rows = data["data"];
-
+  
   // @ts-ignore
   $: ({ headers, name } = Tables[table]);
-  let alerts: Array<{message: string, type: "fail" | "success"}>= [];
   let formData: Record<string, any> = {};
 
   onMount(() => {
     for (const header of headers) {
-      formData[header] = rows[header];
+      const value = rows[header];
+      if (value instanceof Date) {
+        formData[header] = value.toISOString().slice(0, 19).replace("T", " ");
+        continue;
+      }
+      formData[header] = value;
     }
   });
 
   // @ts-ignore
-	async function handleSubmit(event) {
-		const data = new FormData(event.currentTarget);
-		const response = await fetch(event.currentTarget.action, {
-			method: 'POST',
-			body: data
-		});
-		const result: ActionResult = deserialize(await response.text());
-    console.log(result)
-		if (result.type === 'success') {
-			await invalidateAll();
-		}
-    alerts = [
-      ...alerts,
+  async function handleSubmit(event) {
+    const data = new FormData(event.currentTarget);
+    const response = await fetch(event.currentTarget.action, {
+      method: "POST",
+      body: data,
+    });
+    const result: ActionResult = deserialize(await response.text());
+    if (result.type === "success") {
+      await invalidateAll();
+    }
+    $alerts = [
+      ...$alerts,
       // @ts-ignore
-      { message: result.data.message, type: result.data.success ? "success" : "fail"}
-    ]
-		applyAction(result);
-	}
+      {
+        message: result.data.message,
+        type: result.data.success ? "success" : "fail",
+      },
+    ];
+    applyAction(result);
+  }
 </script>
 
 <main class="w-full">
-  <Alerts data={alerts} />
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },
@@ -92,6 +97,7 @@
     >
       Edit an Entry
     </button>
+  <form>
     <form></form>
   </form>
 </main>

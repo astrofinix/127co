@@ -8,38 +8,40 @@
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import { Label, Input, Helper } from "flowbite-svelte";
   import Tables from "$lib/tables";
-  import Alerts from "$lib/components/Alerts.svelte";
+
+  import { alerts } from "$lib/store";
 
   export let data: NonNullable<PageServerData>;
   $: table = data["table"];
   // @ts-ignore
   $: ({ name, headers } = Tables[table]);
 
-  let alerts: Array<{message: string, type: "fail" | "success"}>= [];
   let formData: Record<string, any> = {};
 
   // @ts-ignore
-	async function handleSubmit(event) {
-		const data = new FormData(event.currentTarget);
-		const response = await fetch(event.currentTarget.action, {
-			method: 'POST',
-			body: data
-		});
-		const result: ActionResult = deserialize(await response.text());
-		if (result.type === 'success') {
-			await invalidateAll();
-		}
-    alerts = [
-      ...alerts,
+  async function handleSubmit(event) {
+    const data = new FormData(event.currentTarget);
+    const response = await fetch(event.currentTarget.action, {
+      method: "POST",
+      body: data,
+    });
+    const result: ActionResult = deserialize(await response.text());
+    if (result.type === "success") {
+      await invalidateAll();
+    }
+    $alerts = [
+      ...$alerts,
       // @ts-ignore
-      { message: result.data.message, type: result.data.success ? "success" : "fail"}
-    ]
-		applyAction(result);
-	}
+      {
+        message: result.data.message,
+        type: result.data.success ? "success" : "fail",
+      },
+    ];
+    applyAction(result);
+  }
 </script>
 
 <main class="w-full">
-  <Alerts data={alerts}/>
   <Breadcrumb
     items={[
       { href: "/dashboard/supplies", text: "Supplies and Inventory" },

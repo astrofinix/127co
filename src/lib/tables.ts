@@ -143,6 +143,122 @@ const Tables: Record<string, Table> = {
     primaryKey: "CLTransaction_ID",
     name: "Loan Transactions",
   },
+
+  Salary: {
+    headers: [
+      "Salary_Id",
+      "Employee_Id",
+      "Salary_Date",
+      "Salary_Net",
+      "Salary_Gross",
+      "Salary_Added",
+      "Salary_Deducted",
+    ],
+    department: "finance",
+    primaryKey: "Salary_Id",
+    name: "Salary"
+  },
+
+  Budget: {
+    headers: [
+      "Budget_Id",
+      "Budget_Name",
+      "Budget_Category",
+      "Budget_Amount",
+      "Item_Id",
+      "Project_Id",
+    ],
+    department: "finance",
+    primaryKey: "Budget_Id",
+    name: "Budget"
+  },
+
+  Expenditure: {
+    headers: [
+      "Expense_Id",
+      "Expense_Name",
+      "Expense_Date",
+      "Expense_Amount",
+      "CT_Id",
+      "Expense_Project_Status",
+      "Salary_Id",
+    ],
+    department: "finance",
+    primaryKey: "Expense_Id",
+    name: "Expenditure"
+  },
+
+  Contract_Transaction: {
+    headers: [
+      "CT_Id",
+      "CT_Date",
+      "CT_Total_Amount",
+      "CT_Payment",
+      "CT_Balance",
+      "CT_Total_Paid",
+      "CT_Payment_Type",
+      "Project_Id",
+    ],
+    department: "finance",
+    primaryKey: "CT_Id",
+    name: "Contract Transactions"
+  },
+
+  Profit: {
+    headers: [
+      "Profit_Id",
+      "Profit_Date",
+      "Profit_Gross",
+      "Profit_Expense_Amount",
+      "Profit_CT_Payment",
+      "Profit_Net",
+    ],
+    department: "finance",
+    primaryKey: "Profit_Id",
+    name: "Profit"
+  },
+  
+  
+    Client: {
+    headers: [
+      "Client_ID",
+      "Client_CompanyName",
+      "Client_RepFirstName",
+      "Client_RepLastName",
+      "Client_RepContactNum",
+      "Client_SecRepFirstName",
+      "Client_SecRepLastName",
+      "Client_SecRepContactNum",
+      "Client_Address",
+      "Client_Email",
+      "Client_TelNo",
+    ],
+    department: "marketing",
+    primaryKey: "Client_ID",
+    name: "Contract"
+  },
+
+  Contract: {
+    headers: [
+      "Contract_ID",
+      "Contract_LegalPerson",
+      "Contract_SignedDate",
+      "Contract_StartDate",
+      "Contract_EstimatedEndDate",
+      "Contract_ActualEndDate",
+      "Contract_ProjectDurationYears",
+      "Contract_MaintenanceYears",
+      "Contract_Status",
+      "Contract_FileLink",
+      "Project_ID",
+      "Signatory_ClientID",
+      "Signatory_EmployeeID",
+      "Transaction_ID",
+    ],
+    department: "marketing",
+    primaryKey: "Contract_ID",
+    name: "Contract"
+  },
 };
 
 export default Tables;
