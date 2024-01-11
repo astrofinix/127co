@@ -61,9 +61,9 @@ export const actions = {
     );
 
     const [member_added] = await db.execute<ResultSetHeader[]>(
-      `UPDATE Employee SET Employee_ReportsTo = ${team[0].Team_Leader_ID} WHERE Employee_ID = ${data.get(
-        "member",
-      )}`,
+      `UPDATE Employee SET Employee_ReportsTo = ${
+        team[0].Team_Leader_ID
+      } WHERE Employee_ID = ${data.get("member")}`,
     );
   },
   remove_member: async ({ request, params }) => {

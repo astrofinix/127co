@@ -81,17 +81,13 @@
         <ul>
           {#each data.team.Team_Members as member}
             <li class="flex justify-between">
-              <a
-                href="/dashboard/human_resources/employee/{member.Employee_ID}"
-              >{member.Employee_FirstName}
+              <a href="/dashboard/human_resources/employee/{member.Employee_ID}"
+                >{member.Employee_FirstName}
                 {member.Employee_MiddleName ? member.Employee_MiddleName : ""}
-                {member.Employee_LastName}</a>
+                {member.Employee_LastName}</a
+              >
               <form action="?/remove_member" method="POST">
-                <input
-                  type="hidden"
-                  name="member"
-                  value={member.Employee_ID}
-                />
+                <input type="hidden" name="member" value={member.Employee_ID} />
                 <button
                   class={"flex text-sm my-0.5 rounded-md items-center space-x-3 py-2 px-4 transition duration-200 hover:bg-phover hover:text-secondary focus:text-accent focus:bg-afocus"}
                 >
@@ -111,12 +107,9 @@
                 value=""
                 required
               >
-                <option value="" disabled selected hidden
-                  >Select Member</option
-                >
+                <option value="" disabled selected hidden>Select Member</option>
                 {#each data.team.Other_Members as omember}
-                  <option
-                    value={omember.Employee_ID}
+                  <option value={omember.Employee_ID}
                     >{omember.Employee_FirstName}
                     {omember.Employee_MiddleName
                       ? omember.Employee_MiddleName
@@ -160,7 +153,8 @@
             <li class="flex justify-between">
               <a
                 href="/dashboard/project_management/projects/{project.Project_ID}"
-              >{project.Project_Name}</a>
+                >{project.Project_Name}</a
+              >
               <form action="?/remove_project" method="POST">
                 <input
                   type="hidden"
@@ -186,14 +180,10 @@
                 value=""
                 required
               >
-                <option value="" disabled selected hidden
-                  >Select Project</option
+                <option value="" disabled selected hidden>Select Project</option
                 >
                 {#each data.team.Other_Projects as oproj}
-                  <option
-                    value={oproj.Project_ID}
-                    >{oproj.Project_Name}</option
-                  >
+                  <option value={oproj.Project_ID}>{oproj.Project_Name}</option>
                 {/each}
               </select>
               <button
@@ -385,7 +375,8 @@
     padding: 0;
   }
 
-  button:hover, button:focus {
+  button:hover,
+  button:focus {
     background-color: transparent;
   }
 </style>
