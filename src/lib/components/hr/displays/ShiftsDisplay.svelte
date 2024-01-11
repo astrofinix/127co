@@ -27,7 +27,7 @@
 				<TableBodyCell>{schedule.Shift_StartTime}</TableBodyCell>
 				<TableBodyCell>{schedule.Shift_EndTime}</TableBodyCell>
 				<TableBodyCell>
-					<form method="POST" action="shift/{schedule.Shift_ID}/edit?/edit">
+					<form method="POST" action="./shift/{schedule.Shift_ID}/edit?/edit">
 						<Button type="submit">Edit</Button>
 					</form>
 				</TableBodyCell>

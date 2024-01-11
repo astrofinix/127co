@@ -140,7 +140,7 @@
 		/>
 	</div>
 	<div class="flex flex-col items-center">
-		<form method="POST" action="/employee/{employee.Employee_ID}/editPDS?/edit">
+		<form method="POST" action="./employee/{employee.Employee_ID}/editPDS?/edit">
 			<Button type="submit">Edit</Button>
 		</form>
 	</div>

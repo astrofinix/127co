@@ -67,7 +67,7 @@
           <TableBodyCell>
             <form
               method="POST"
-              action={`/employee/${employee.Employee_ID}/editEmployee?/edit`}
+              action={`./employee/${employee.Employee_ID}/editEmployee?/edit`}
             >
               <Button type="submit">Edit</Button>
             </form>

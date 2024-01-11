@@ -33,7 +33,7 @@
 				<TableBodyCell>{formatDateTime(log.Timesheet_TimeIn)}</TableBodyCell>
 				<TableBodyCell>{formatDateTime(log.Timesheet_TimeOut)}</TableBodyCell>
 				<TableBodyCell>
-					<form method="POST" action="timesheet/{log.Timesheet_ID}/edit?/edit">
+					<form method="POST" action="./timesheet/{log.Timesheet_ID}/edit?/edit">
 						<Button type="submit">Edit</Button>
 					</form>
 				</TableBodyCell>
