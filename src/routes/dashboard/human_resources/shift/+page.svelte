@@ -1,5 +1,5 @@
 <script>
-  import ShiftsDisplay from "../../lib/components/hr/displays/ShiftsDisplay.svelte";
+  import ShiftsDisplay from "$lib/components/hr/displays/ShiftsDisplay.svelte";
 
   export let data;
 </script>

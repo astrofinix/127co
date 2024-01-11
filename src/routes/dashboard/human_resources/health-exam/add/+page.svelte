@@ -1,5 +1,5 @@
 <script>
-  import AddHealthExamForm from "../../../lib/components/hr/add/AddHealthExamForm.svelte";
+  import AddHealthExamForm from "$lib/components/hr/add/AddHealthExamForm.svelte";
 
   export let form;
 </script>

@@ -7,7 +7,6 @@
   let exam = data.data[0];
 </script>
 
-<a href="../../">back home</a>
 <hr />
 <h1>Editing Health Exam ID: {exam.HE_ID}</h1>
 <EditHealthExamForm {form} {exam} />

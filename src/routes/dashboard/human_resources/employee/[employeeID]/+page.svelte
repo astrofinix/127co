@@ -1,5 +1,5 @@
 <script>
-  import PDSDisplay from "../../../lib/components/hr/displays/PDSDisplay.svelte";
+  import PDSDisplay from "$lib/components/hr/displays/PDSDisplay.svelte";
   export let data;
 </script>
 
