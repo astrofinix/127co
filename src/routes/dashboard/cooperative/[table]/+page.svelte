@@ -3,7 +3,6 @@
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import type { PageServerData } from "./$types";
   import Tables from "$lib/tables";
-  import Alert from "$lib/components/Alert.svelte";
 
 
 
@@ -12,10 +11,9 @@
   $: rows = data["data"] as Array<Record<string, any>>;
   const table = data["table"] as string;
   $: department = "cooperative";
-  const { headers, name } = Tables[table];
+  const { name } = Tables[table];
 </script>
 <main class="w-full">
-
   <Breadcrumb
     items={[
       { href: "/dashboard/cooperative", text: "Cooperative" },
@@ -33,8 +31,5 @@
 
   </a>
   <Table {table} {rows} />
-
-  <Alert />
-
 
 </main>
