@@ -28,11 +28,30 @@ export const actions: Actions = {
       return error(404, { message: "invalid table" });
     }
 
-    console.log("INVOKED");
-    await db.execute(
-      `DELETE FROM ${tableName} WHERE ${table.primaryKey}='${id}'`,
-    );
+    try {
+      await db.execute(
+        `DELETE FROM ${tableName} WHERE ${table.primaryKey}='${id}'`,
+      );
+    } catch (e: any) {
+      return { success: false, message: e.message };
+    }
 
-    return { success: true };
+    return { success: true, message: "Success: Entry has been deleted from the database" };
   },
+
+  search: async ({cookies, request, params}) => {
+    const data = await request.formData();
+    const query = data.get("query");
+    const table = params.table
+    const sql = `SELECT * FROM ${table} WHERE (${query})`;
+
+    let results;
+    try {
+      results = await db.execute(sql);
+    } catch (e) {
+      return { success: true, rows: [] }
+    }
+  
+    return { success: true, rows: results[0] }
+  }
 };

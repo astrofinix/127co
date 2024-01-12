@@ -111,6 +111,92 @@
           ]}
         />
       </div>
+    {:else if link.href === "/dashboard/cooperative"}
+    <div class="w-full">
+      <a
+        href="/dashboard/cooperative"
+        class="text-2xl font-bold flex items-center pb-6"
+      >
+        Cooperative
+      </a>
+      <DescriptiveLink
+        links={[
+          {
+            href: "/dashboard/cooperative/Request",
+            label: "Request",
+            icon: "contract",
+            description: "Track all request applications.",
+          },
+          {
+            href: "/dashboard/cooperative/Membership",
+            label: "Membership",
+            icon: "group",
+            description: "Know more about the members.",
+          },
+          {
+            href: "/dashboard/cooperative/CM_Payout",
+            label: "Membership Payout",
+            icon: "money",
+            description: "Track the payout transactions of all members.",
+          },
+          {
+            href: "/dashboard/cooperative/SavingsAccounts",
+            label: "Savings Accounts",
+            icon: "wallet",
+            description: "Assess the status of the savings accounts.",
+          },
+          {
+            href: "/dashboard/cooperative/CS_Transaction",
+            label: "Savings Transactions",
+            icon: "book",
+            description: "Track all transactions of all savings accounts.",
+          },
+          {
+            href: "/dashboard/cooperative/LoanRecords",
+            label: "Loan Records",
+            icon: "edit",
+            description: "Assess the status of the loan records.",
+          },
+          {
+            href: "/dashboard/cooperative/CL_Transaction",
+            label: "Loan Transactions",
+            icon: "receipt",
+            description: "Track all transactions of all loan records.",
+          },
+        ]}
+      />
+    </div>
+    {:else if link.href === "/dashboard/supplies"}
+    <div class="w-full">
+      <a
+        href="/dashboard/supplies"
+        class="text-2xl font-bold flex items-center pb-6"
+      >
+        Supplies and Inventory
+      </a>
+      <DescriptiveLink
+        links={[
+          {
+            href: "/dashboard/supplies/Item",
+            label: "Items",
+            icon: "devices",
+            description: "Assess current item information.",
+          },
+          {
+            href: "/dashboard/supplies/Item_Transaction",
+            label: "Transactions",
+            icon: "contract",
+            description: "Track all transactions of all inventory items.",
+          },
+          {
+            href: "/dashboard/supplies/Supplier",
+            label: "Supplier",
+            icon: "warehouse",
+            description: "Know more about supplier contact information.",
+          },
+        ]}
+      />
+    </div>
     {:else if link.href === "/dashboard/finance"}
       <div class="w-full">
         <a

@@ -10,7 +10,7 @@
     href="/dashboard/cooperative/Request"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
-    <span class="text-3xl material-symbols-outlined mr-5"> devices </span>
+    <span class="text-3xl material-symbols-outlined mr-5"> contract </span>
     <div class="flex w-full flex-col h-full">
       <span>Request</span>
       <span class="text-subtext z-4">Track all request applications.</span>
@@ -24,7 +24,7 @@
     href="/dashboard/cooperative/Membership"
     class="bg-buttonp rounded-lg z-4 border-2 mb-1 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
-    <span class="text-3xl material-symbols-outlined mr-5"> warehouse </span>
+    <span class="text-3xl material-symbols-outlined mr-5"> group </span>
     <div class="flex w-full flex-col h-full">
       <span>Membership</span>
       <span class="text-subtext z-4">Know more about the members.</span>
@@ -38,7 +38,7 @@
     href="/dashboard/cooperative/CM_Payout"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
-    <span class="text-3xl material-symbols-outlined mr-5"> contract </span>
+    <span class="text-3xl material-symbols-outlined mr-5"> money </span>
     <div class="flex w-full flex-col h-full">
       <span>Membership Payout</span>
       <span class="text-subtext z-4"
@@ -54,7 +54,7 @@
     href="/dashboard/cooperative/SavingsAccounts"
     class="bg-buttonp rounded-lg z-4 border-2 mb-1 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
-    <span class="text-3xl material-symbols-outlined mr-5"> warehouse </span>
+    <span class="text-3xl material-symbols-outlined mr-5"> wallet </span>
     <div class="flex w-full flex-col h-full">
       <span>Savings Accounts</span>
       <span class="text-subtext z-4"
@@ -70,7 +70,7 @@
     href="/dashboard/cooperative/CS_Transaction"
     class="bg-buttonp rounded-lg z-4 mb-1 border-2 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
-    <span class="text-3xl material-symbols-outlined mr-5"> contract </span>
+    <span class="text-3xl material-symbols-outlined mr-5"> book </span>
     <div class="flex w-full flex-col h-full">
       <span>Savings Transactions</span>
       <span class="text-subtext z-4"
@@ -86,7 +86,7 @@
     href="/dashboard/cooperative/LoanRecords"
     class="bg-buttonp rounded-lg z-4 border-2 mb-1 border-outline p-4 flex items-center hover:bg-buttonphover active:bg-buttonpactive"
   >
-    <span class="text-3xl material-symbols-outlined mr-5"> warehouse </span>
+    <span class="text-3xl material-symbols-outlined mr-5"> edit </span>
     <div class="flex w-full flex-col h-full">
       <span>Loan Records</span>
       <span class="text-subtext z-4"
