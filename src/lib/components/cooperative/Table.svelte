@@ -1,40 +1,40 @@
 <script lang="ts">
   import type { ActionResult } from "@sveltejs/kit";
 
-import { enhance, applyAction, deserialize } from "$app/forms";
-import { invalidateAll } from "$app/navigation";
+  import { enhance, applyAction, deserialize } from "$app/forms";
+  import { invalidateAll } from "$app/navigation";
 
-import Tables from "$lib/tables";
+  import Tables from "$lib/tables";
 
-import { alerts } from "$lib/store";
+  import { alerts } from "$lib/store";
 
-export let rows: Array<Record<string, any>> = [];
-export let table: string;
+  export let rows: Array<Record<string, any>> = [];
+  export let table: string;
 
-// @ts-ignore
-$: ({ headers, primaryKey, department } = Tables[table]);
+  // @ts-ignore
+  $: ({ headers, primaryKey, department } = Tables[table]);
 
-// @ts-ignore
-async function handleSubmit(event) {
-  const data = new FormData(event.currentTarget);
-  const response = await fetch(event.currentTarget.action, {
-    method: "POST",
-    body: data,
-  });
-  const result: ActionResult = deserialize(await response.text());
-  if (result.type === "success") {
-    await invalidateAll();
+  // @ts-ignore
+  async function handleSubmit(event) {
+    const data = new FormData(event.currentTarget);
+    const response = await fetch(event.currentTarget.action, {
+      method: "POST",
+      body: data,
+    });
+    const result: ActionResult = deserialize(await response.text());
+    if (result.type === "success") {
+      await invalidateAll();
+    }
+    $alerts = [
+      ...$alerts,
+      // @ts-ignore
+      {
+        message: result.data.message,
+        type: result.data.success ? "success" : "fail",
+      },
+    ];
+    applyAction(result);
   }
-  $alerts = [
-    ...$alerts,
-    // @ts-ignore
-    {
-      message: result.data.message,
-      type: result.data.success ? "success" : "fail",
-    },
-  ];
-  applyAction(result);
-}
 </script>
 
 <div class="flex mt-4 mb-4 flex-col">
@@ -72,7 +72,11 @@ async function handleSubmit(event) {
                 <td
                   class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium"
                 >
-                  <form method="POST" action="?/delete" on:submit|preventDefault={handleSubmit}>
+                  <form
+                    method="POST"
+                    action="?/delete"
+                    on:submit|preventDefault={handleSubmit}
+                  >
                     <input
                       type="hidden"
                       name="table"

@@ -36,22 +36,25 @@ export const actions: Actions = {
       return { success: false, message: e.message };
     }
 
-    return { success: true, message: "Success: Entry has been deleted from the database" };
+    return {
+      success: true,
+      message: "Success: Entry has been deleted from the database",
+    };
   },
 
-  search: async ({cookies, request, params}) => {
+  search: async ({ cookies, request, params }) => {
     const data = await request.formData();
     const query = data.get("query");
-    const table = params.table
+    const table = params.table;
     const sql = `SELECT * FROM ${table} WHERE (${query})`;
 
     let results;
     try {
       results = await db.execute(sql);
     } catch (e) {
-      return { success: true, rows: [] }
+      return { success: true, rows: [] };
     }
-  
-    return { success: true, rows: results[0] }
-  }
+
+    return { success: true, rows: results[0] };
+  },
 };
