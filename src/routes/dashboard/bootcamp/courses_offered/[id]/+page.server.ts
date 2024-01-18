@@ -46,6 +46,7 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
   const enrollments = enrollmentResult || [];
   const remainingSlots = slots[0];
 
+  
   return {
     course,
     Enrollments: enrollments,

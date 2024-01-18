@@ -5,9 +5,9 @@ import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ cookies, params }) => {
   const courseID = params.id;
-
+  
   const [courses] = await db.execute<RowDataPacket[]>(
-    `SELECT * FROM Course_Offered WHERE Course_ID = "${courseID}"`,
+    `SELECT * FROM Course_Offered WHERE Course_ID = "${courseID}"`
   );
 
   const [instructors] = await db.execute<RowDataPacket[]>(
@@ -18,27 +18,27 @@ export const load: PageServerLoad = async ({ cookies, params }) => {
     FROM Employee e
     INNER JOIN Job j ON e.Employee_ID = j.Employee_ID
     INNER JOIN PDS p ON e.Employee_ID = p.Employee_ID
-    WHERE j.Job_Position = "Instructor"`,
+    WHERE j.Job_Position = "Instructor"`
   );
 
   const [listcourseID] = await db.execute<RowDataPacket[]>(
-    `SELECT Course_ID FROM Course_Offered`,
+    `SELECT Course_ID FROM Course_Offered`
   );
 
   const course = courses[0];
   const employeeNames = instructors;
   const courseIDs = listcourseID;
-
+  
   console.log(course);
 
-  return {
-    course,
-    employeeNames,
-    courseIDs,
-  };
+return { 
+  course, employeeNames, courseIDs
+  };  
+
+
 };
 
-export const actions = {
+export const actions = { 
   default: async ({ request, params }) => {
     const data = await request.formData();
     const courseID = params.id;
@@ -71,7 +71,8 @@ export const actions = {
       Course_Schedule = "${courseSchedule}",
       Course_ID = "${newcourseID}"
       WHERE Course_ID = "${courseID}"
-      `,
+      `
+
     );
 
     const [instructor_update] = await db.execute<ResultSetHeader[]>(
@@ -79,9 +80,13 @@ export const actions = {
       Employee_ID = "${employeeID}",
       Course_ID = "${newcourseID}"
       WHERE Course_ID = "${courseID}"
-      `,
+      `
     );
 
+    
     throw redirect(302, `/dashboard/bootcamp/courses_offered`);
-  },
+  }
+
 } satisfies Actions;
+
+
